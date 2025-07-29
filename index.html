@@ -29,7 +29,6 @@
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
@@ -81,66 +80,6 @@
             animation: slideUp 1s ease-out 0.5s both;
         }
 
-        .journey-message {
-            background: linear-gradient(135deg, var(--color-coral) 0%, var(--color-peach) 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(238, 133, 114, 0.3);
-            margin-bottom: 40px;
-            animation: slideUp 1s ease-out 0.7s both;
-        }
-
-        .journey-message h2 {
-            font-size: 1.75rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .journey-message p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .contact-section {
-            animation: slideUp 1s ease-out 0.9s both;
-        }
-
-        .contact-section h3 {
-            color: var(--color-dark-teal);
-            margin-bottom: 15px;
-            font-size: 1.25rem;
-        }
-
-        .email-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--color-dark-teal);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(49, 96, 116, 0.3);
-        }
-
-        .email-link:hover {
-            background-color: var(--color-medium-teal);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(49, 96, 116, 0.4);
-        }
-
-        .footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #e0e0e0;
-            color: var(--color-text-light);
-            font-size: 0.875rem;
-            animation: fadeIn 1s ease-out 1.1s both;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from {
@@ -172,37 +111,12 @@
                 font-size: 1.1rem;
             }
 
-            .journey-message {
-                padding: 25px;
-            }
-
-            .journey-message h2 {
-                font-size: 1.5rem;
-            }
-
-            .journey-message p {
-                font-size: 1rem;
-            }
-
             .logo {
                 width: 150px;
                 height: 150px;
             }
         }
 
-        /* Mountain path decoration */
-        .mountain-decoration {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent 0%, var(--color-background) 50%),
-                        linear-gradient(135deg, var(--color-dark-teal) 0%, var(--color-medium-teal) 50%, var(--color-coral) 100%);
-            clip-path: polygon(0 50%, 15% 30%, 30% 40%, 45% 20%, 60% 35%, 75% 25%, 90% 40%, 100% 30%, 100% 100%, 0 100%);
-            opacity: 0.1;
-            z-index: -1;
-        }
     </style>
 </head>
 <body>
@@ -214,30 +128,7 @@
         </div>
 
         <h1>The Respected Path</h1>
-        <p class="tagline">Journey with Purpose, Walk with Wisdom</p>
-
-        <div class="journey-message">
-            <h2>Follow the Respected Path</h2>
-            <p>
-                Every journey begins with a single step. Whether you're navigating life's challenges, 
-                seeking personal growth, or exploring new horizons, the respected path is one of 
-                mindfulness, integrity, and continuous discovery.
-            </p>
-        </div>
-
-        <div class="contact-section">
-            <h3>Stay Connected</h3>
-            <a href="mailto:hello@respectedpath.com" class="email-link">
-                <span>✉️</span>
-                <span>Get in Touch</span>
-            </a>
-        </div>
-
-        <footer class="footer">
-            <p>&copy; 2025 The Respected Path. All journeys begin somewhere.</p>
-        </footer>
     </div>
 
-    <div class="mountain-decoration"></div>
 </body>
 </html>
