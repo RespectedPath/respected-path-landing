@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcelona | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Barcelona</h1>
+    <div class="meta">June 09, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is my second time to Barcelona. I visited for a few short days in 2017. On a shorter Spain trip. The city is what you would get if Miami and Los Angeles got together and had a baby, and was clean, mostly. Having both Beaches and Mountains within easy reach, a warm and predictable climate year round Barcelona has become a popular place in Europe for people looking for an cool and relaxed way of life. While I will be seeing many of Barcelona’s the primary purpose of this visit it to be a tourist. Actually, the tourist hat is being hung up, for a while.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>It became apparent to me a few months ago, that just being a tourist for a year wasn’t going to be very fulfilling. Besides having an album of photos, what was I going to have to show for this adventure? Would that be the best use of this time? After seeking guidance from other people who are doing or have done something like this I came up with a list of options.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I looked into many things such as volunteering opportunities, but eventually decided that “moving” somewhere for an extended time would be a better way to spend this extended amount of time. After some research I found that Spain has a very liberal visa scheme for people who want to come to Spain to study Spanish or one of the other languages from the Iberian Peninsula (Catalan, Basque etc.). The schools that participate are very affordable, all things considered, and once enrolled you are given Temporary Residency in Spain for the duration of your studies. This also gives you unfettered access to the Schengen Zone and unlimited entrances and exits, as long as you attend 80% of your course. A passing grade allows you to extend, for another year, if you desire. You are also allowed to work up to 30 hours a week. I haven’t decided if I will do that, though.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My stop in in Barcelona is more for personal business. I have to register with the school, get documents in order in order to apply for the student permit with Spanish Immigration. My short stop in San Jose Costa Rica a few weeks back was to get my fingerprints done so I could get documents from officials in the United States needed by Spanish Authorities. And finally find more long term accommodations in Barcelona (not an easy task in these days).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Classes still don’t start for a few more weeks, and I have a few more adventures planned between now and then. But for now, Barcelona is home.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="791-madrid-spain.html" class="prev"><span class="label">← Previous</span>Madrid, Spain</a>
+        <a href="813-naples-italy.html" class="next"><span class="label">Next →</span>Naples, Italy</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

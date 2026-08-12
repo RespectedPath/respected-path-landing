@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baja Ferries | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Baja Ferries</h1>
+    <div class="meta">January 26, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>The time had finally come to leave the Baja peninsula and check the first portion of this adventure off the to-do list. I’ll make a more comprehensive post about my thoughts on Baja as a whole in a few days, but for now we will say this has been an experience for the books and I will always lookback fondly on my time in Baja California.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The easiest way to get to mainland Mexico from Los Cabos is to fly. Mexico has 2 big Low-Cost Airlines and one full service airline that offer a variety of flights around the country as reasonable rates and times. This is not that kind of adventure though. I can fly an Airbus A320 to anytime I want, I’ve done it dozens of times. What I can’t do anytime I want is take a Mexican truck ferry for 12 hours, overnight to Mazatlán. It did save some money too, the fare for the ferry was ~$98USD, this included dinner and breakfast. One of the first things you learn about budget traveling is the benefits of booking overnight transportation. You always have to pay for lodging (well, unless you’re one of <em>those </em>kinds of NOMADS), and you always have to pay for transportation (again, most people do). If you can kill 2 birds with one stone, it always a plus. The flight options were to spend about $40 more to fly to Guadalajara and backtrack to the coast, spending more money. The choice was obvious.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The day started by walking to the San Jose del Cabo bus station with a roommate from the hostel. A girl from Belgium who was traveling on the same bus as me back to La Paz, although she was catching a flight back home to Europe after being in Mexico for 4 months studying. I purchased my ticket on the reliable Baja Eagle (Aguila Bus lines). My last ride on the Eag as they don’t operate outside of Baja California and waited patiently for the bus to begin boarding.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":325,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240123_102028-large.jpeg" alt="" class="wp-image-325" /><figcaption class="wp-element-caption">Our valiant steed</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>We had arrived about 45 mins early but as time drew closer to departure there was no driver to be found. About 10 mins prior to our scheduled departure an annoyed station manager came out of her office and started pacing around the bus, opening the doors and baggage compartments.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A lot of the bigger bus stations in México have small hotel rooms attached to the station for what I presume are for drivers to rest in-between runs. The manager walkt to the other side of the bus and just screams</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“JOSE!!!!, VINCENTE JOSE!!!”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A few moments pass still no sign of this no-way Jose.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“JOSE!!!!, VINCENTE JOSE!!!” she repeats.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Janitor meekly asks if she wants him to go knock and she shakes her head.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A few moments later our driver appears from one of the rooms hastily buttoning his shirt. The manager taps an imaginary watch on her wrist, and he says something in Spanish.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After getting on the bus I see him pull a paper from the dashboard and show it to the manager. He shrugs his shoulders in what appears to be defeat and we shortly begin tagging our luggage and handing over our tickets.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The route is just the reverse of how I arrived to San Jose. Passing again thought Cabo San Lucas and Todos Santos, dropping me off at the La Paz Malecon station about 20 mins early. The ferry wasn’t schedules to leave until 7pm and it was just before 3pm. I got lunch and made a pit stop at an Oxxo for snacks as I wasn’t so sure about the food situation on the ship.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The port for La Paz is actually about 30 mins away in an area called Pichilinque. A quick DiDi (a foreign version of Uber) got me to the port with plenty of time to spare. Arriving to the terminal and boarding areas are a little confusing as their isn’t really much signage and no one ever gives you instructions. You just have to wing it and ask for help when needed. I eventually found the Baja Ferries office and a small line at a window. So if you’re reading this and don’t know me personally, I was in the Marine Corps for 5 years when I was younger which included a lengthy deployment on the USS Kearsarge. One of the many things Marines to well in regards to large ships in stand in lines. You stand in a line for the shower. You stand in line to eat. You wait in line to use the gym. To get a haricut. Sometimes I would just stand in a line because there was other Marines in a line so I would join them. So when it comes to standing in a line in regards to a Nautical vessel I was practically an expert. I reverted back to my old training (head and eyes straight to the front, don’t lock the knees) and the time passed with ease and soon it was my turn at the window.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I handed over my paperwork and the clerk looked it over, looked at my ID and printed my boarding pass. And pointed in the general direction of behind me. I looked behind me and was a little confused at this point as there was no line. The was a cue for a line but just a lonesome janitor mopping the floor and some other passengers sitting on some chairs nearby. My training had not prepared me for this. So I figured I would do the next best thing and wait for the line to form and took a seat.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Out of curiosity I asked the couple sitting across from me, “Que hora abordamos?”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I must have butchered the language because the man answered back in English, “If you have your boarding pass you need to talk to that guy” and pointed to the janitor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I figured this must be some sort of joke, but as good tourist I did as I am told.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I walked up to the janitor who put down his mop and took my paper work. He read my name from papers “James Joseph…ok you can go” and pointed to the open gate further down the hall. Bewildered that this was actually what I was supposed to do I gathered my things and began the walk.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Standing next to a desk with two ferry company representatives is a Mexican Marine, (they provide security for the ports and not out of place here) so I figure if anyone is going to start a line it’s this guy. And sure, enough after they check my documents again, he motions for me to put my bag on a cart and to start a line at the end of a ramp. I don’t know what this line is for but at least it’s a line and that means were making progress.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I stand there for a few minutes and other people start lining up behind me and eventually a Sprinter van pulls up to take us to the ship.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The amenities on the ship are sparse and the attendant directs me to my seat for the evening and I settle in for the long ride. I quickly survey the passenger areas of the ship. We have our seating area, a galley and a bar. They did have cabins to purchase but they were significantly more expensive.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":330,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-330" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":329,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240123_173438-large.jpeg" alt="" class="wp-image-329" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":328,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-328" /><figcaption class="wp-element-caption">A fellow traveler took this candid photo of me and later shared it with me. Its hard to get non selfie photos while traveling, so this is always appreciated.</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>The passenger area has about 150 seats and 4 TV’s. My experience on the busses in Mexico tells me those TVs will be used to play bootleg movies until way past my bedtime, and I was correct with the sets not finishing the live action Aladdin with Will Smith until well after 1am (dubbed in Spanish of course).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Shortly after the ship got underway, I made my way back to the galley for food and was greeted by this appetiizing meal. And since this is an adventure and we do adventurous things, I ate it of course And I’m glad I did because it wasn’t bad at all. Just some beef, beans, rice and tortillas. Classic Mexican staples. Even when Mexican food looks bad, it’s still pretty good.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":333,"scale":"cover","sizeSlug":"medium","linkDestination":"none"} -->
+<figure class="wp-block-image size-medium"><img src="photos/20240123_191603-large.jpeg" alt="" class="wp-image-333" style="object-fit:cover" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I’ve never been one to sleep much in any sort of chair on transportation like airplanes or busses so I knew it was going to be a rough one. Thankfully since most of my accommodations are shared Hostel rooms, I came prepared with blackout eye shades and earplugs. I was able to squeak out a few hours of restless sleep and once I saw on my watch it was 6am figured that was a good enough time to call it quits and wait in my chair until we were scheduled to arrive in Mazatlán 3 hours later. I skipped the breakfast as I wasn’t hungry and just got a cup of coffee. Breakfast appeared to be more tortillas beans and eggs for protein. Probably wouldn’t not have been bad either.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We pulled into Mazatlán about 20 mins late, I still didn’t get off the ship for another hour while they tied the ship up and started getting trucks and cars off first. When they allowed up to go it was quick walk to grab my bag and grab another DiDi to the Golden Zone where my hotel for the next few nights was located.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And one last note: I love how Mexican Hotels will give you a room well before check in time if its available. I arrived at a little after 11am, tired, hoping to just drop my bags behind the desk and get some more coffee and breakfast, but they fully checked me in and gave me a room for some much-needed rest and a shower. Hotels in the US will damn near spite you for showing up early and refuse to give you a room you haven’t yet paid for even if it’s the same one available.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="308-los-cabos.html" class="prev"><span class="label">← Previous</span>Los Cabos</a>
+        <a href="340-mazatlán.html" class="next"><span class="label">Next →</span>Mazatlán</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

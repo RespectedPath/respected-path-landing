@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Day 1</h1>
+    <div class="meta">January 04, 2024 · <span class="cat">Blog Posts</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>The iconic white peaks of Denver International Airport break the horizon. I’ve done this portion of the journey dozens, if not hundreds of times in my life.&nbsp; This is not a novel sight for me. But today it hits different, today is more permanent. 3 months ago, I quit my job and decided to fulfil a long-time dream of mine to travel full time, for an extended amount of time. One year. I took a few months, to “recenter” myself and spend the holiday season with family. And now I’m on the first leg of an extended ramble around the world.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The first hurdle appeared last night. As I’m re confirming my travel plans the google maps entry for the hostel I booked in Ensenada, Mexico indicated that its permanently closed. That can’t be I think to myself. I booked this like 3 weeks ago on Hostel World. I scroll down to the reviews and the first review says “I booked this 3 weeks ago on Hostel World, only to show up and its closed” F*k</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I check the fine print on my reservation and see I can cancel with no penalty before midnight. The premise that there could be a penalty for cancelling a reservation for a closed hostel is ridiculous but, at least if I hurry, I don’t have to talk to a person on the phone. So, I click the link to cancel and the site confirms my initial deposit will be refunded. I start looking for alternate accommodations but find that the only other Hostel in all of Northern Baja California is in Tijuana. I specifically chose Ensenada for my first night because I was trying to avoid all that is Tijuanna. Oh well, it looks like were going all gas, no brakes for our first night abroad.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>With our first crisis averted and an entire night or trying to fit way more than I should into a 55L backpack, ultimately I have to remove half of what I intended to bring were ready for our first “travel day” of this excursion.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>First, a flight from Denver to San Diego, positioning myself to cross the USA-Mexico border by foot at Tijuana. The San Ysidro crossing is one of the busiest in the world, with over 70,000 people crossing every day. I’ve travelled fairly extensively in my life, but don’t think I’ve ever crossed an international border on foot, and definity not with 2 large backpacks in tow. &nbsp;</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After a standard Southwest airlines flight, complete with the requisite witty flight attendant (shift happens in flight, so be cautious when opening the overhead bins) I arrived at the San Diego airport a few minutes late, (Whats a few minutes when you have the entire year?) and proceeded to the local bus stop to catch the bus to the downtown trolley station. Although I did a great job of saving for this trip, and I don’t need to scrimp, I do have a budget, and that does not include a $50-75 Uber ride to the border. Public transportation will cost $5 (actually $5.50 because I didn’t have exact change for one of the transfers) and will get me exactly where I need to be. &nbsp;The Blue Line trolley drops you off mere feet from the San Ysidro border crossing and I was the only <em>Extrajero </em>so my immigration line was nonexistent and walked right up to the immigration official with no wait.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The key to crossing any international border with little hassle as possible is to have all your documentation in order when you arrive. For Mexico, this meant having not just my US Passport, but also an additional tourism authorization called an FMM. For most US tourists this is included in your airfare when visiting Mexico, but when you cross by land is an extra step that can easily be overlooked. It’s not required if you stay within the <em>Zona Libre, </em>an area roughly 100 miles from the border, and less than 7 days. Most Americans crossing from San Diego are just on day trips or weekend getaways and never need to pay the $40 for your tourist tax and no one will ask or tell you if you need one. It’s on you to know.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>One of the benefits of the Coronavirus pandemic I think was the further digitalization of the world, and now the FMM form is available online after you pay your fee. One less hassle on a travel day is always welcome. I was able to just hand my passport and paperwork over and with nothing more than a <em>Hola </em>and <em>Muchas Gracias</em> had a stamp and 180 day (I will not be here that long) tourism authorization into Mexico. Let the adventure begin. Please, don’t be like the German man behind me, who couldn’t even answer how many days he planned on being in Mexico and turned the Mexican official into a loud and stern speaking burecrat.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I walked around the corner of the immigration hall and waited patiently for submit my bags for inspection. Just a typical X-Ray machine seen throughout the world in these types of facilities. My small backpack comes out and I go to grab it. As my second, larger bag exits the machine the man at the operator’s screen whistles to the <em>Guardia Nacional </em>soldier at the end of the table and flashes a light onto my bag. I already know what this is about.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I wear Daily contact lenses. Last night while packing my bags I had to break apart one years supply of daily lenses into multiple batches and stuff them in various pockets of my bag. I can only imagine what hundreds of small, foil, plastic and liquid filled packages looks like on a Customs officials x ray machine.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I grab my large bag and proactively start moving it to the inspection station when the soldier says, “Viajero Aqui.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Hola” I greet as I place my bag on the table.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Esta su solo bolsa?” he asks if this is my only bag.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No y aqui” I reply while lifting my smaller bag, full of mostly electronics. My answer probably isn’t grammatically correct but it gets the point across.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Were joined by another soldier who joins in the search of my smaller bag and they surprisingly are very gently and don’t go full lawnmower and rip my stuff to shreds. He eventually finds the first batch of a few hundred lenses in the head pocket of my bag. He pulls them out and looks quizzically at them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“lentes para me ojos” I say, explaining in broken Spanish what he has found.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Lentes contactos?” he clarifies, contact lenses.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“si” I affirm.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Mucho lentes”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Solo para un dia” I try to explain.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He says something to his colleague I can’t understand. And she shrugs her shoulders. He continues to carefully go through my things and finds the rest of my stash, and shrugs his shoulders also and starts putting my things back into my bag. I have things packed very tight and he struggles a bit with the last few items and since he has already done me a favor in my opinion by not totally destroying my packing job, I ask,</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Esta Bien?”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Si” he replies and hands me my things back and I finish stuffing the contents into the 55L main pack.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The other solider soon after finished her inspection and I’m on my way, a free man in Mexico.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I exit the immigration hall and stop to allow myself to activate the eSim card for my phone to ensure I have proper cellular coverage as required in today’s digital world. The smartphone is the modern iteration of a Swiss army knife I can’t imagine being anywhere without having a completely functional device, especially in a place where you are literally a foreigner and may need to quickly reference or translate something. I use <a href="//ref.airalo.com/gf6y">Airalo</a> to purchase my first eSim(and if you use the link, we both get $3 off), and while set up was a little clunky, the directions were thorough and I was able to get the phone operational in a few minutes time. I find it amazing how accurate the cellular providers are as I wasn’t even 10 steps across the border when indicator on my phone has switched to a crossed-out circle indicating my US based cell service was already null and void.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I punch in the address of my new hostel and see I’m only 2km away. That’s walking distance and one of my missions for this trip is to not spend money un necessarily. I walk past lines of <em>Taxistas</em> politely declining their offers for a ride. The problem is, its 4:30 pm in January and the sun is setting fast. While I try to keep an open mind on these types of things, it’s not a secret that Tijuana has a bit of a…reputation. And here’s my 6’1” Caucasian self, carrying both a backpack, and a front back pack, which doesn’t take a lot of deduction to see is probably full of very expensive electronics. While the route from the border to the <em>Centro</em> is heavily trafficked and well laid out, one wrong turn can put you into some very, very bad neighborhoods very easily.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I find my way to <em>Avenida Revolucion</em> quickly but, not without passing some shady characters along the way. <em>Revolucion</em> is the main tourist throughfare in TJ and also where my hostel is located. Or I think it should be. My phones GPS says its 550m (metric being a leaning curve for my American self) and I walk briskly down the street passing dozens of bars and restaurants and food carts with smells of Carne Asada and fresh tortillas. I’m ready to drop my belongings and start grubbing down. I check my phone periodically to ensure I’m still making progress and the distance slowly ticks down as I cross each road. That is until I notice that the distance has getting start larger indicating I’ve missed a turn. I make a 180 and try to start matching landmarks from Google Maps to things I’m seeing in real life. A restaurant, an OXXO, a pharmacy indicates I’m on the correct path but, don’t see the sign for my hostel. I see a <em>messero </em>wiping tables at the restaurant.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Discuple. A donde es Hostel Paris” I ask.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He replies speaking quickly, typical for a native speaker. Something DuoLingo has not prepared me for yet. I get the jest of what he says, by picking out a few key words I know but, mostly because he’s pointing in the opposite direction of what my phone is telling me. It wouldn’t be the first time Google Maps is wrong and I figure a local’s knowledge is far superior.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Cruces esta Calle y izquierda?” I clarify.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Si, izquierda” he replies, indicating I just need to cross the street and make a left on the next block.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I blindly accept his directions and the bright lights of <em>Avenida Revolucion</em> start to dim behind me.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This doesn’t seem correct so I ask a food cart attendant, “A Donde es Hostel Paris?” He looks at me confused but, another man interjects.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Otra calle, izquierda” indicating I should be on the correct path.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I make the turn onto the other block. Less illuminated than the last and filled with more <em>Farmacias</em> and <em>Tienditas</em> and hordes of commuters waiting for <em>Taxi’s de Rutas</em>, small busses offering cheaper public transportation. Although, nothing immediately feels unsafe, I don’t see any indication of my sleeping accommodations. I stop at another food vendor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Senora, una pregunta por favor. A donde es Hostel Paris?”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No hablas ingles” she smiles, telling me she doesn’t understand what I am asking. I know my Spanish is bad but, this woman honestly thought I was speaking English and my confidence in my Spanish abilities, which had been slowly building all afternoon, is immediately deflated. “el hombre de la farmacia habla inglés” and points to the store behind me indicating I can get help from them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I walk in and get the man’s attention. Not wanting to make the situation any more confusing, I just hold up my phone and ask “Hostel Paris?”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No se. No cerca de aqui” he says. I don’t know, it’s not close.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He puts on his glasses and looks at my phone and points at the screen, which indicates I’m going the wrong way. I sense he wants to tell me to just follow to dots. I lack the level of Spanish to communicate I’ve tried that and that’s how I ended up here. I try anyways.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Otra…gente dice es en esta calle” I stammer out. Trying to tell him other people had told me its over here.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No” he says.&nbsp; He rattles something off quickly and all I understand is “Avenida Revolucion” and him pointing behind him, back the way I came.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Ok, Revolucion, gracias” I reply and continue on my quest to find my elusive accommodations.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Its solidly nighttime now and it feels like everyone eyes are on the lost<em> extrajero. </em>I can feel my anxiety building but, manage to keep it in check as I turn back onto <em>Revolucion.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>There’s the Pharmacy, it should be here, I think to myself.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I try something different and turn onto a cross street opposite from which I just came. I try to scan the surrounding buildings as inconspicuously as possible. Trying not to stick out more than I already am. Now, as luck would have it, I spy a photo of the Eiffel Tower wallpapered onto the wall inside a business guiding me to my French named, Mexican accommodations like a light house in a storm. Expect this light house doesn’t have a kerosene lamp, it has an old, small, unlit sign indicating I have finally found what I’ve been looking for. Not surprisingly, exactly where my phone said it should be. Some where my phone switch from a North orientation to a forward orientation and got me turned around.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I get checked in, uneventfully, and the receptionist shows me to my shared dorm. There’s 7 beds, not including mine to make 8 but, there’s no one else in the room. Hopefully it stays this way. She shows me the outdoor terrace, pretty standard for a hostel like this and leaves me to unpack.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I get settled and head out to find something to eat being very familiar with the local area by now. The smells of street Tacos fill every corner and after changing some USD for MXP at the closest <em>cambio</em> I stop at the first 2 Tacos for $20 (pesos) cart I see. I get 2 <em>carne</em> and a bottle of Coke. Mexican style, in a glass bottle, made with cane sugar, not the High Fructose Corn Syrup stuff we get at home.&nbsp; The cart a few feet away is selling hot churros and I happily oblige.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>With a growling stomach subdued, I stop at the Oxxo to grab a 6 pack of whatever local beer I can get, in this case Tecate Light, and make my way back to the hostel to write the post on the Hostel terrace. The cool breeze from the Pacific Ocean makes it necessary for a light jacket. Hopefully, it won’t be necessary much longer.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <span></span>
+        <a href="210-guerrero-negro-whale-watching.html" class="next"><span class="label">Next →</span>Guerrero Negro Whale Watching</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

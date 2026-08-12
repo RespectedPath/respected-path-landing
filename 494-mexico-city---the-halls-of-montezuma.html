@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexico City - The Halls of Montezuma | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Mexico City - The Halls of Montezuma</h1>
+    <div class="meta">February 24, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>At 18 years old, fresh out of high school, I enlisted in the United States Marine Corps. I served for one, 5-year enlistment. Even though the time spent was nothing but a speed bump on the road of life, being a member of an an organization of that caliber will influence your persona for the rest of your life.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Marine Corps hymn famously begins with the words, “From the Halls of Montezuma…” Montezuma being the colloquial term for Chapultepec Castle in Mexico City. Chapultepec Castle sits atop a hill in what is now the heart of the bustling metropolis of México City. At the time the lyrics came to be it was an outpost on the city’s edge. It housed the new Republic’s military academy. Though it was built in 1785 to house the Viceroy of New Spain. One of only 2 palaces to house European royalty in the new world.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":513,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240206_100904-large.jpeg" alt="" class="wp-image-513" /><figcaption class="wp-element-caption">U.S. forces had to build makeshift ladders to scale the hill that supported the castle.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":512,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240206_114617-large.jpeg" alt="" class="wp-image-512" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":511,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240206_110305-large.jpeg" alt="" class="wp-image-511" /><figcaption class="wp-element-caption">One of the "Halls of Montezuma"</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p><strong>Battle for Chapultepec</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The Marine’s story takes place in September of 1847 at the Battle of Chapultepec during the Mexican-American war. I will preface the rest of this post as saying the Mexican-American war was one of, if not the most un-American wars ever fought. Based on a lie, rooted in Manifest Destiny and racism, the Mexican-American war is a blemish on our nation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Abraham Lincoln stated the war was “immoral…a threat to our nation’s republican values.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Ulysses S. Grant, who was a fresh Lieutenant during the campaign had the opinion it was “one of the most unjust [wars] ever waged by a stronger against a weaker nation.”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>450 Marines were present in México since the landing in Veracruz to begin the campaign towards the capital. Only 40 Marines were present at the Battle of Chapultepec. 30 became casualties. In Marine Corps lore, the red stripe worn on the trousers of Officers and Non-commissioned Officers, represents the blood shed by those men at that battle (not entirely true though, as Marines wore red stripes on their trousers since before the battle).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The loss was an embarrassing defeat to the Mexican forces. General Nicolas Bravo was responsible for the defense of Mexico City and was routed by U.S. MajGen Winfield Scott. Scott feigned an attack on the city’s southern causeways. The actual attack came on the morning of September 13th on Chapultepec Castle on the city’s western edge. The castle was hardly defended with only 3 guns, a few hundred troops, including cadets from the military academy. The capture of the Castle and the hill allowed U.S. forces unresticted access to the Mexican Capital.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Besides a small exhibit about the U.S. Invasion (what the Mexican’s call the Mexican-American war), there is almost no mention about American forces in the castle. The story they tell is that of <em>Los Niños Héroes</em>, The Boy Hero’s.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Los Niños Héroes</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Shortly after American forces began an artillery bombardment on the castle, General Nicolas Bravo had realized his mistake and ordered the retreat from the castle to spare the lives of the young cadets housed there. 5 cadets and 1 Lieutenant instructor (ages 13-19) defied the order and decided to fight and defend their school and home. Their decision not to retreat stemmed from their unwavering sense of duty, patriotism, and honor. They believed that abandoning their post would be a betrayal of their country and their comrades. Despite being vastly outnumbered and facing overwhelming odds, the Niños Héroes chose to stand their ground and fight to the end, demonstrating extraordinary courage and sacrifice in the face of adversity.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In the main garden of the castle sits the Torre Caballero Alto, The Tall Gentlemen. Atop the tower the Mexican national flag is flown, and was on that morning. The legend is that instructor, Lieutenant Juan Escutia climbed the tower and removed the flag. He draped himself in it and jumped to his death, preventing the flag from falling into enemy hands.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":500,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-500" /><figcaption class="wp-element-caption">Torre Caballero Alto</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The narrative of the Niños Héroes reflects the enduring legacy of national pride and unity. Their sacrifice became a rallying cry for Mexicans, galvanizing the nation's spirit and fostering a sense of solidarity in the midst of conflict. The story continues to resonate with Mexicans of all generations, reminding them of the importance of honoring their heritage and standing up for what they believe in.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":506,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240206_101840-large.jpeg" alt="" class="wp-image-506" /><figcaption class="wp-element-caption">Mural depicting Lt. Escutia's jump in the main Atrium of the Castle</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Historians will admit discrepancies in the story of Los Niños Heroes though. Most notably the flag and Lt. Escutias jump. The flag that was flown from the tower that day was taken back to West Point as a war trophy. It was returned to México in 1942 as a gesture of goodwill towards the Mexican Republic.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Overall, the theme of the Los Niños Héroes story encapsulates the timeless values of courage, sacrifice, and patriotism, serving as a powerful reminder of the indomitable human spirit in the pursuit of freedom and justice. Today streets, boulevards, schools and even Metro stations in the nation’s capital are named in remembrance of Los Niños Heroes and on September 12 the country celebrates their sacrifice with a national Holiday.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":509,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-509" /><figcaption class="wp-element-caption">Statues of Los Niños Heroes located on the grounds of the castle. A larger monument is located in the Chapultepec park which surrounds the castle. It was undergoing renovations at the time I was there and was unable to get a suitable photo.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><strong>American National Cemetery, Mexico City</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I imagine theres a lot of people who have lived their entire lives in Mexico City, but don't know of the existence of The American National Cemetery. Located in the San Rafael neighborhood, on a sliver of land bordered by a 6 lane thoroughfare on one side and a bustling neighborhood on the other, the tall concrete walls keep out much of the noise from the metropolis outside. Just a few acres in size it's well manicured grounds are easy to overlook with all the hustle and bustle of the continents largest city. Established in 1851 and maintained by the American Battlefield Monuments Commission (the same agency that maintains the more famous Cemeteries in Europe and Asia) the grounds are the final resting place for Soldiers and Marines who died during the Mexican-American conflict.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":503,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240208_145115-large.jpeg" alt="" class="wp-image-503" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":501,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240208_144423-large.jpeg" alt="" class="wp-image-501" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":502,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240208_144459-large.jpeg" alt="" class="wp-image-502" /><figcaption class="wp-element-caption">The inscription reads:<br />TO THE HONORED MEMORY<br />OF 750 AMERICANS<br />KNOWN BUT TO GOD<br />WHOSE BONES COLLECTED<br />BY THEIR COUNTRY'S ORDER<br />ARE HERE BURIED</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>The cemetery's presence in Mexico City is a testament to the historical complexities and intertwined destinies of the two neighboring nations. Its establishment reflects the shared history, mutual respect, and the sacrifices made by American soldiers on foreign soil. The site symbolizes the deep-rooted ties between the United States and Mexico, transcending borders and fostering a sense of unity and remembrance.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Conclusion</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In conclusion, the Battle of Chapultepec and the narrative of Los Niños Héroes serve as enduring testaments to the resilience and unwavering commitment to duty and honor. These stories transcend time, reminding us of the extraordinary bravery and sacrifice displayed in the face of adversity. As we commemorate the shared history between the United States and Mexico, let us draw inspiration from these tales of courage and patriotism. They remind us of the profound impact individuals can have in shaping the course of history, and the importance of honoring their legacies for generations to come.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="483-méxico-city---casa-azul.html" class="prev"><span class="label">← Previous</span>México City - Casa Azul</a>
+        <a href="526-mexico-city---end.html" class="next"><span class="label">Next →</span>Mexico City - End</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

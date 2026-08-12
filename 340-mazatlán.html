@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mazatlán | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Mazatlán</h1>
+    <div class="meta">January 28, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>Mazatlán was the first city that surprised me.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Mazatlán started its life as an outpost of smugglers and pirates. The Mexican government opened a customs office in the 1850’s legitimizing the settlement. It rose to prominence in the 1950’s as a resort destination along with other cities along the Mexican Riviera like Acapulco. Violence and unrest in the 90’s and early 2000’s made Mazatlán not tourist friendly for many years. But in 2015, after reaching a security agreement with the Mexican government, the cruise ships returned and Mazatlán has been rebuilding itself to its former glory.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Mazatlán has 2 main areas that tourists will find themselves spending their time in. The Zona Dorada or Gold Zone which you will find familiar if your other destinations have been tourism hubs like Los Cabos or Cancun. High Rise hotels, overpriced restaurants and Señor Frogs.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The other is the historical center. My guidebook has talked about how this place was seeing a resurgence in recent years, but I was more than surprised by what I had stumbled up. With its tiled plazas, lined with restaurants and cafés. To its cobblestone and palm lined streets, you could convince yourself that you were in the south of Spain or France, not the southern neighbor of the United States.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Of course, as usual I had arrived early in the morning before any potential crowds would arrive to be able enjoy the area in relative calm. Only a few restaurants and cafés were open and I grabbed a coffee and began my stroll. It was obvious this area was still up and coming, but I imagine it’s hard to justify more than was there since the primary customer is cruise ship passengers who only spend a few hours. There were galleries showcasing the works of local artisans, and a lot were at reasonable prices. Handmade leather crafts and pottery were available for under $50 and if I was on a different trip, one with a sooner return date I probably would have picked up a few curios to show off at home.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":344,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240125_092344-large.jpeg" alt="" class="wp-image-344" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":343,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240125_093106-large.jpeg" alt="" class="wp-image-343" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":342,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240125_114028-large.jpeg" alt="" class="wp-image-342" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>After spending 2 weeks along the coasts of Baja I was admittedly beached out and decided to find something else to do besides lounge on the beach. A popular recommendation was El Parqe Faro. A hike up a mountain that would provide a panoramic view of the Bahia Mazatlan and get up close to a working light house (modern lighthouses are not nearly as beautiful as their predecessors seen along the coasts of north America.)</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>It was midday, and not exactly the best time to go hiking up a steep mountain but armed with a bottle of water and sunscreen I plugged the address into my GPS and trudged along the rocky cliffs to the Park Entrance. Even now, the views were stunning looking down onto the waves crashing against the rocks and the tide pools formed by the lower tides of the day.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I arrived at the park where I was told that walking the path was free, which was good because I didn’t realize there might be a charge at all and began the trudge up the winding and steep path. The trail was paved and even had steps in steeper parts so the 2km was a breeze, although there was no breeze, battling against the mid-day sun was the worse aspect of the hike.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The views from the top were wide and far but looking down on the industrial harbor, seeing dozens of high-rise hotels in various states of construction and large orange and white antennas sitting atop the hillside, I preferred the scenes from the street below.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":348,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240125_115653-large.jpeg" alt="" class="wp-image-348" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>I haven’t been on this journey for very long, but will have to say that Mazatlán is a must do on anyone’s Mexican itinerary. Although its primary group of tourists may only come for a few hours, between the white sand beaches, the historical center and various tours and activities, one could easily spend 3-4 days there and not be bored. I was also told by a cab driver that Mazatlán hosts a Carnival every year which is supposed to rival those in Brazil and New Orleans, although I missed that by a few weeks. Maybe I’ll return one day to see that.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="324-baja-ferries.html" class="prev"><span class="label">← Previous</span>Baja Ferries</a>
+        <a href="356-sayulita.html" class="next"><span class="label">Next →</span>Sayulita</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

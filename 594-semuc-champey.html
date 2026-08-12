@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semuc Champey | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Semuc Champey</h1>
+    <div class="meta">March 20, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>As I perused the different offerings of tour operators in Flores I couldn’t help but notice how every agency seemed to offer the same things. Admittedly, I hadn’t done much research on what one sees and does in Guatemala so I really had no idea what to look for. There were photos on all the walls for a destination called Semuc Champey. The photos were of a beautiful set of natural pools with green-blue water cascading into each other. The shuttle was about $25 and would be 8 hours. I figured this would be a great place to stop while eventually heading towards the colonial city of Antigua. I found a killer deal on a “glamping” experience on the adjacent city of Lanquin. A private tent in a “glamping resort” for $25 a night. When you’ve been spending countless nights in $10 a night hostels with bunkbeds, that may or may not even have hot water a private anything is always welcome.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":596,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240226_174105-large.jpeg" alt="" class="wp-image-596" /><figcaption class="wp-element-caption">Not bad for $25 a night</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":597,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240227_163028-large.jpeg" alt="" class="wp-image-597" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>There is certain places in the world where entire industries exist to support the budget backpacker style of travel. South East Asia trail, the “gringo trail” or Peru, Ecuador and Colombia and here in Central America, the Cancun and Southbound (none of these are official titles, just what I colloquialy call them for east of identification) are havens for people looking for a little more adventure than sitting at a resort and looking to do so on a budget. This became readily apparent in Flores as my fellow travelers were distinctly much younger and much more European. Lots of the people at my hostel were all on similar journeys. Fly to Cancun (flights are cheap there from most places in the western world) and slowly make your way south seeing various attractions and sights along the way.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The shuttle to Sumec Champey left Flores at 10 am, and I looked around to see that I was easily the oldest person there. By 10 years, at least. It was cool though. Everyone was chill and a long night of “twenty something year old partying” the night before kept most people sleeping well into the journey. As the crow flies, the distance between the two towns is less than 100 miles. Guatemalan terrain and much more primitive highways mean it will take a lot longer than in other places to traverse. Winding mountain roads and even a sketchy “ferry” ride across a river add up. After a few scheduled comfort stops at restaurants and a few unscheduled stops to let sick passengers handle their business we arrived early in the evening in the town of Lanquin.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":599,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240226_101304-large.jpeg" alt="" class="wp-image-599" /><figcaption class="wp-element-caption">The ferry across an unkown river</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The backpacker travel industry wasn’t more readily apparent than it was here. When we arrived the hostels in the city had their busses ready and waiting to take their guests back to their accommodations. Much like a package tour deal from those resort destinations that people on theses trips are usually trying to avoid. The hostels offer the same 2 or three tours in packages and when your done with your reservations they bus you back to the shuttle stop and send you your way to your next destination. My glamping resort was close enough to the shuttle stop they didn’t offer this service so I was on the old foot and leather express, less than a kilometer to where I would stay. But not before a busker with nearly flawless English approached me about tours.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My accomidations offered the same tours as everywhere else, but at a decent markup, mostly because of the “upscale” property they were ($25 a night is a lot in this part of the world). I planned to look into local tour agencies, but this man offered me a tour for the things I wanted to do at a decent price. I got his phone number and made the reservation via Whatsapp in the evening.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The most popular attraction in Lanquin, besides the pools of Semec Champey is the Ka’an Ba caves, immediate adjacent to the pools I saw in the photos the day prior. The advertisement for the caves seems rather innocuous, they tell you they will take you to the caves and will explore them with a local Mayan guide. Then you will go to some water falls that sit at the end of the pools where you will have some time to swim and enjoy the natural beauty of the area. Afterwards you ride in intertubes down the river where you have lunch, then hike to a magnificent view point of the pools, then hike down and spend the rest of your afternoon lounging in the warm blue green water of Semuc Champey national park. I had no idea what I signed up for.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I was picked up outside my resort that morning by a truck full of other tourist all standing in the back, there was no room to sit. We drove through the winding roads of Lanquin for about half and hour to the entrance to Ka’an Ba caves where we were immedialy accosed by about half a dozen local girls offering to rent us water shoes for 35 Quetzals ($4.50) for the day. I guess more people had done their research than I did, because they happily handed over the money. I just figured I would go barefoot if it was that bad.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>They guided us to a changing area where we put out valuables into a group locker and headed up a set of stairs to the entrance of the cave. The guide repeated asked me if I was ok with my shoes getting wet. I said sure, now realizing the water shoes might have been a better idea. But, how bad could it really be? When I offered to take my shoes off, they said either my shoes or the water shoes no bare feet. Oh well.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As we stood outside the entrance, the guide brought us some sort of seeds. He crushed the pod, opened it and revealed a red substance which he then spread on his face. He explained how the ancient Mayan’s would used the stuff as natural mosquito and sun sun repellent. Then encourage us to do the same. We helped each other put the substance on our face and arms, what some people would call “appropriating culture”. Then the guide handed us a candle. A candle?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":604,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-604" /><figcaption class="wp-element-caption">My awful attempt at Mayan body paiting</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":605,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-605" /><figcaption class="wp-element-caption">People climbing the worlds sketchiest ladder</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Yes, a candle. That will be cool I thought. This will be dark, and the candle will give a nice haunting ambiance as we walk through.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We walked towards the entrance and I hear the sound of rushing water. Hmm, must be a waterfall inside or something, that will be quaint. As the first people in out group go in I hear the splashing of water. Hmmm, ok. &nbsp;And sure enough about 10 feet later I’m face with a ledge and a pool of water waist deep. This is why I shouldn’t have worm my shoes. Oh well.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I jump into the waste deep water and follow the candle light of the group. The water gets deeper and deeper until it’s up to my chest. Some shorter people are already swimming and holding onto a cable that has been stretched across the surface for support. Just our candles and a few lanterns lighting the way. The sound of rushing water gets louder and louder. I now realize we are in a legit underground river.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>They talked about this stuff in grade school science class. But, it didn’t dawn on me until I’m waste deep in water, no telling how far underground, that underground rivers can be legitimately a river with fast flowing water and waterfalls etc. We stopped at a spot where the guide used a headlamp to illuminate the surroundings so everyone can get a photo. I opted for the selfie, showing my half assed attempt at appropriating Mayan culture (with the permission of two local Mayan guides). We then had to climb a ladder, that the word sketchy does not even begin to describe, up a small underground waterfall. Oh yeah, the heads space at the top of this ladder, maybe 3 feet. So I’m ducking through the cave, trying to keep my candle lit and follow the group. Before I know it, I’m chest deep in water again facing another waterfall, maybe 10 feet tall and a rope hanging over the edge. Everyone else seens heistant, but my shoes are already drenched so I grab the rope and ascent up the water fall. I’m then told to jump. But only to the left. Why not right? I didn’t question. I make the jump with the applause of my group mates and then wait for everyone else to take their turn. Our guide then does his own jump and then moves to a small opening on the side of the cave. Our candles were collected before the jump so all we have it the light of a few lanterns and the headlamp of our guide. I just see a small hole maybe 3 feet across,</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I’m in the back of the group so I don’t hear exactly what was wait, but see a girl walk in front of the guide.&nbsp; He directs her to place her hand and feet in a certain area. She then lets go and disappears like a (excuse my crudeness here, there’s really no other way to describe it) terd in an airplane toilet. We line up, and when it’s my turn I do as instructed and in a whiff I free fall about 10 feet into a lake below. The other group members who have already gone are are huddled away from the hole. Some also looking surpised and terrified about what just happened.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The rest of the cave tour was a blur. Maybe the excitement from the waterfalls and the hole, maybe we just made our way out peacefully through the river. I don’t remember. We eventually ended up right back where we started with everyone breathing a sign of relief that it was over with. We walked back down the stairs past the meeting point. We get handed a intertube like from a truck tire and follow a path to a beautiful waterfall. The guide the explains we can just hang out in the pool or we have the option to jump from a few overlooks adjacent to it. 3 meters, 10 meters and 14 meters. &nbsp;He tells us, dissapointingly, theres an 18 meter jump, but its off limits due to the river being too low. Shucks</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>So anyway, I make my way up to the 14 meter jump and look over. After the encouragement of a younger Austalian guy I jump feet first. Hitting the water from that high hurts and I decide to just enjoy the natural beauty of the waterfalls and encourage everyone else to make the dive.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After everyone had their turn, or multiple turns. We grabbed the intertubes from earlier and set off on a nice relaxing float down the river.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Take now, pay later” local boys yell as they rush in into the river to sell us beers. I did not partake. The tubing was the first relaxing part of the day and we eventually headed off to another cave(with much less water), where a local woman had a small restaurant and served us buffet style.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The rest of the day wasn’t as exciting at the first half. The hike to the lookout area was arduous, but short. And the pools were as beautiful as the pictures had shown. The last event of the day thought would be without a little excitement. There’s a small air pocket under one of the small cascades in the pools. The guides showed us how to get in there without inhaling a bunch of water, then how to swim underneath for a safe exit.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":601,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240227_132608-large.jpeg" alt="" class="wp-image-601" /><figcaption class="wp-element-caption">Semuc Champey National Park, Guatemala</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>We then had some free time to lounge around the pools before being trucked back to our accommodations in Lanquin.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The past few days had me feeling down and questioning my motivation level to continue the trip. I went off the Lanquin not knowing what to expect. Just knowing it was another spot along this backpackers trail, a good way to kill the time while I figured out what I really wanted to do. I got back to my tent that night and used the WiFi (remember, I was Glamping) to actually see what it out there about Semuc Champey. I found loads of Blogs and Videos going into detail about what would happened, the cave river, the hole drop, the 14 meter jump. I easily could have known exactly what to expect had I just did a quick Google search before hand. But, then it wouldn’t have been nearly as fun. It wasn’t about traversing an underground river, jumping off underground water falling into mysterious holes and jumping off increasingly higher overlooks. It was about the unknown, just living in the moment and going with the flow. Not worrying about a plan, or what to do, just letting things happen. I’m not really sure how to channel this new found feelings into the rest of my trip, but I think I’ve found a starting point.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:embed {"url":"https://youtu.be/GkMe1_gDYTY","type":"video","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://youtu.be/GkMe1_gDYTY
+</div><figcaption class="wp-element-caption">I'm still trying to work on my videography skills. lol Just a bunch of clips to help prove I wasnt making up what I said lol</figcaption></figure>
+<!-- /wp:embed --></div>
+    <div class="post-nav">
+        <a href="577-flores-guatemala.html" class="prev"><span class="label">← Previous</span>Flores, Guatemala</a>
+        <a href="609-antigua.html" class="next"><span class="label">Next →</span>Antigua</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

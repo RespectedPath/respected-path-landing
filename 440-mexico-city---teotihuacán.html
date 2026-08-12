@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexico City - Teotihuacán | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Mexico City - Teotihuacán</h1>
+    <div class="meta">February 17, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>When visiting the capital of México one of the must see attractions is the pre-Aztec (yes before the Aztec’s) pyramids of Teotihuacán. About an hour outside the city, though they are accessible to those daring enough to venture through various modes of public transport. Usually, this is what I would do. But, I had grown frustrated by México’s City’s public transport system and chose to book a guided tour instead. This was beneficial in more ways than one.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>People sing the praises on the capitals public transport system. I don’t agree. While it was handy in some instances, I found it to be unreliable, in one instance I was less than 1km from my destination when the driver made in inaudible announcement, stopped the bus, and everyone got off. I continued along the route we were supposed to follow and found another half dozen buses doing the same thing. It was always crowded. Twice I missed my stop, because I was unable to maneuver myself, politely, to the door before they took off. The metro card I purchased was missing 10 pesos of credit, even after verifying the amount on the screen when I purchased it. Routes that were supposed to run every few minutes would have no busses and I would be directed to the cash only Rutas. Maybe I just don’t understand the nuances of public transit in México, but after a week, it still continued to find new ways to baffle me.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":450,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_101056-large.jpeg" alt="" class="wp-image-450" /><figcaption class="wp-element-caption">Entering the archaeological site youre greeted by the first pyramid. The temple of Quetzalcoatl.</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>I meet my group bright and early outside the Palace of Fine Arts and after initial greetings we made our way to the pyramids of Teotihuacán. One trolley ride and a suburban bus later we arrived at the main gate to the site. Of course, you can’t go to these places without first being bombarded by shops selling the typical tourist curios. Sombreros, Ponchos, T Shirts, noise makers overpriced sunscreen. Thankfully our guide hurried us past the stalls and we got the tour started at the Temple of Quetzalcoatl. This pyramid is one you are actually able to climb and a seating area has been built so your guide can give a brief lecture about the 2 gods depicted, Quetzalcoatl and Tlaloc. Quetzalcoatl is the god of the Sun. Tlaloc, the god of water. Amongst other things.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":442,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_101747-large.jpeg" alt="" class="wp-image-442" /><figcaption class="wp-element-caption">Quetazalcoatl, to me looks like a cat with a flower costume, is actually a feathered serpent. Tlaloc, with the googly eyes.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Little conclusive is known about Teotihuacán and its inhabitants. It's originally inhabitants had no known writing system and the city was practically abandoned sometime around 650AD for unknown reasons (archaeologists and anthropologists believe it may have been due to civil strife towards the ruling class, but there is still much debate as to why). A lot of what we do know is because of what was carried on to later societies.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We made our way down the main road of the complex, called The Avenue of the Dead. And stopped at the remains of the living quarters of the city. The city, in total was over 21km2(13mi2 appx). The current park that’s accessible to tourists is only about 10km2. If you lived this close to the center of the city it was safe to assume you were higher up in Teotihuacano society. Familes lived in multi family compounds, which is one of the things that made Teotihuacán society stand apart from others in the same time in history.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":443,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_110254-large.jpeg" alt="" class="wp-image-443" /><figcaption class="wp-element-caption">The remains of the family housing area. Most of the stones are original. The pyramid ot he moon sits in the distance.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Continuing down the Avenue of the Dead we made a few more stops to admire remaing murals and other artwork still intact. Think of the Pyramids of Teotihuacán as giant Russain Stacking Dolls. One would be built, and decades or centuries later, they would decide to build another, on top of the other. They would build the new temple and, just using fill, like rocks and dirt to seal the space between the 2 pyramids. This would leave the original pyramid sealed from the elements for hundreds or thousands of years. Archaeologists carefully reveal these older layers, giving us an unprecedented view of the ancient world.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":445,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_131537-large.jpeg" alt="" class="wp-image-445" /><figcaption class="wp-element-caption">Original artwork decorating the facade of a burried temple.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":446,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_124804-large.jpeg" alt="" class="wp-image-446" /><figcaption class="wp-element-caption">Again, the ancient world was colorful. Something that I always forget when imagining prehistoric times.</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>We eventually approached the first of the 2 largest pyramids on the site. The Pyramid of the Moon. As I wrote earlier, we know very little about this society and why they did what they did. The pyramids are flat on top, leading us to believe that they were used as some sort of altar. Ceremonies and sacrifices, both animal and human, were performed on top.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":447,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_114143-large.jpeg" alt="" class="wp-image-447" /><figcaption class="wp-element-caption">Pyramid of the moon seen from a walking path.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The largest of the pyramids in Teotihuacán, the Pyramid of the sun sits a staggering 216 feet tall. And measures, 720x760 feet at its base. Again, we know very little about the reasoning for its creation. Similar to the Pyramid of the Moon. It seemed to be used as an altar for religious ceremonies.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":449,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240205_124036-large.jpeg" alt="" class="wp-image-449" /><figcaption class="wp-element-caption">The Pyramid of the Sun. Why do I get some serious Star Wars vibes from this?</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>After getting our requisite selfies and photos with the pyramids we made our way to the exit. We spent about 4 hours in total in the archaeological site. It was time well spent. We can read about these places and society’s all we want but, nothing will compare to physically being amongst the stones and temples that were centerpieces of these cultures. The appreciation I have for these monuments is unquestioned now and will be adding more pre-Colombian sites to my itinerary.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>P.S. There’s almost no interpretive signs inside the complex of Teotihuacán. A guide is an absolute necessity unless you like wandering around trying to guess what a bunch of stacked rocks could mean.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="419-méxico-city-part-1.html" class="prev"><span class="label">← Previous</span>México City, Part 1</a>
+        <a href="483-méxico-city---casa-azul.html" class="next"><span class="label">Next →</span>México City - Casa Azul</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

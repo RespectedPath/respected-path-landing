@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Salvador | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>El Salvador</h1>
+    <div class="meta">April 06, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>All my posts up to this point have been a dive into the things I saw and did in a particular location. I can’t really do that for El Salvador. I didn’t see what ever cultural attractions there were. I didn’t visit ancient historical sights. I just chilled. I found an Hostel close to the beach and just chilled. This is probably the most 1st world problem there is, but traveling like this can really take it out of you. Moving every few days, public transportation, language barriers and other realities of the world really add up after a while and the new exciting and adventurous become the mundane.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Guatemala’s tourist industry revolves around Antigua . Most people fly to Guatamala city and take a shuttle to Antigua where they they filter out to other destinations, before eventually retuning to Antigua and shuttling back to the city and leaving. I didn’t realize this until I was in Guatamala city and needed to <em>not</em> go to Antigua. Wanting to leave for the beaches of El Salvador every shuttle operator wanted to send me back to Antigua before catching a shuttle to El Salvador. As I was walking back to my hostel after a much-needed McDonalds Quarter pounder I saw a bus station for Cristobal Colon busses, the biggest international bus company in Central America. After inquiring with the attendant, he told me they did have a route to San Salvador daily and the price was half of what the tourist shuttle were, without having to backtrack to Antigua. Sold.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The ride was uneventful like usual. About 6 hours and one international border (all my documents were correct his time) I arrived to the Capital city of San Salvador. About 10 mins in an Uber and I was at one of the worst hostels I would ever experience. Mattresses on the floor, a broken Air Conditioner and open windows all night meant I left with about a dozen mosquito bites and a slight paranoia that I could have possible contracted Dengue or Malaria. It felt more like a trap house than a Hostel. It was only one night and it was already late so I sucked it up, especially since there weren’t any more options in San Salvador.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The beaches closest to San Salvador are in an area named Surf City. Stretching from La Biertad to El Tunco the black volcanic sand beaches host surfers from around the world and even hosts a professional surfing even every year. Admittidely, I’m not too educated on the details of pro sirfing, so I’ll just take others words for it that El Tunco is one of the best places in the world to surf.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":651,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-651" /><figcaption class="wp-element-caption">Another Thing El Tunco is famous for, its sunsets.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":652,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-652" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Of Course it’s also a good place to learn with surf shops dotting the 3 roads of this tiny town offering board rental and private lessons for about $35 and hour, less if you buy multiple lessons. I gave $125 to a Salvadorian surf shop and had 5 days of one-hour lessons planned for my first week.  Of course Surfing isn’t as easy as it looks and after 5 hours on the water, I can consistently ride a wave, but catching one on my own will still take some time. Which I have plenty of right now.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":650,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-650" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>My second week I packed up my stuff and rode a chicken buss about 20 minutes dow the road to another town, which I don’t think had an official name, but the neighbor hood was called Atami. I rented an AirBnb room from a nice couple from California and spent the next few days at a nearby Dive Shop learning the basic of Open Water Scuba diving. And 2 days later earned my PADI open water SCUBA diver cert. I wish I could show you more pictures from that, but I was focused on not dieing and performing well that I didn even pull my camera out except for the shore intervals.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And that was what I did for 2 weeks in El Salvador. I didn't wander around a Colonial Capital. I didn't see any ancient ruins. I just went to El Salvador and did what I wanted to do.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Just an FYI, there's going to be a lot more about diving in futures posts be cause Ive done a few Fun Boat dives since and I’m hooked lol</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="626-lake-atitlan.html" class="prev"><span class="label">← Previous</span>Lake Atitlan</a>
+        <a href="657-manuel-antonio.html" class="next"><span class="label">Next →</span>Manuel Antonio</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

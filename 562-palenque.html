@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palenque | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Palenque</h1>
+    <div class="meta">March 13, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>I ended up deciding not to ditch Mexico yet. After a night around a firepit, other travelers advised me not to miss Palenque. I was hesitant to take their advice as I had already been to two sets of ancient ruins in Mexico. I’m glad I took their advice.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The ruins in Palenque are much newer than the one I had visited in Oaxaca and Mexico City. Built by the Mayans during their classic period (200-900AD) the architecture is definitly more detailed, showing to how much these civilizations had progressed over the centuries. The ruins sit in the jungle, giving an air of adventure that doesn’t exist at the other site I have been. Experience told me that a guide is always the best way to do these sites as they have little to no interpretive signs, so I found one on Viator and made the reservation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A lot of backpackers take pride in experiencing these things as cheaply as possible. There’s a collectivo service that runs the main Palenque town, to the archaeological site that will deliver you to the main entrance for just a few pesos. There you can pay an entrance fee of 90 pesos and explore the park to your hearts content. But you miss so much without having someone who is knowledgeable and can provide context. Booking a guide online and arranging for transport isn’t that much more expensive (depending on your budget) and provides so much more value.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When I arrived at the site we picked up the guide from the main entrance and after she introduced herself she immediately began to hustle for an extra tour. Disappointed that the reputable company I had booked through, may not be as reputable as I had imagined.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I’m usually a hard no on that kind of upsell stuff but after a few minutes of convincing I forked over 200 pesos and myself an Italian couple were taken to hole in the fence marked “Privado”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The extra tour was tour of the jungle surrounding the archaeological site and, actually, I’m really glad I did it. I’m pretty sure it was on private land because we had to walk through the fence. A man was sitting there with just a clipboard and the guide just spoke to him “tres” indicating 3 of us were with her. During this extra tour she showed us the various plants and trees that inhabit the area. Mahogany, Balsa and various species of Cedar wee unique to the area. But the coolest thing we saw were multiple sites of unexcavated ruins. The whole Palenque archeological site is huge. Thousand upon thousands of buildings are just sitting in the jungle being consumed by the plants that live there. Only the most important buildings get excavated and restored. Most buildings will probably be devoured by the jungle before anyone has the chance to excavate and restore them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":567,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_092832-large.jpeg" alt="" class="wp-image-567" /><figcaption class="wp-element-caption">Balsa tree</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":565,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_094054-large.jpeg" alt="" class="wp-image-565" /><figcaption class="wp-element-caption">The stones are the walls of anoter Palenque building. It will probably never be excavated as there is literally thousands of buildings at the site.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":566,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_093919-large.jpeg" alt="" class="wp-image-566" /><figcaption class="wp-element-caption">Another plant ,which I cant recall its name. The thorns are used for protection, demonstrating just how aggressive even the plants can be in the jungle.</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>After about an hour exploring the jungle around Palenque we returned back to the main park and began the tour of the restored temples, altars and buildings. Palenque reached its peak under Pakal the Great who reigned for 68 years. Some buildings that are restores are Pakal’s palace,  a tomb to what is believed to be his wife and a few temples that were used to worship various gods. As you can see in the pictures the architectures is much more complex and detailed than the other sites I had been on this journey.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":572,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_110707-large.jpeg" alt="" class="wp-image-572" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":570,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_110037-large.jpeg" alt="" class="wp-image-570" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":571,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-571" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":569,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240223_102549-large.jpeg" alt="" class="wp-image-569" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Palenque is another UNESCO world heritage site, and while it gets its fair share of visitors, being 12 hours away from the resort destination of Cancun means other sites (ie Chicen Itza) get more tourists and exposure. This in the the process of changing though. The Mexican government is currently in the final stages of one of its largest projects in history, <a href="https://en.wikipedia.org/wiki/Tren_Maya">Tren Maya</a>. Once fully operational (its currently running, just not on any sort of viable schedule) the cancun airport will be linked directly to the front entrance of the Palenque archeological site. While I was there the main museum was under construction and various other service buildings were being added around the park to handle the inevitable increase in tourists that are about to come. So, if you saw anything here you want to see, give it a year or so and take the Train to Palenque.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:embed {"url":"https://youtu.be/13dnQ7WgjDg","type":"video","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://youtu.be/13dnQ7WgjDg
+</div><figcaption class="wp-element-caption">Almost forgot, the Howler Monkeys. Get to the site early enough, before about 10am, and the Howler Monkeys will be looking for food and eating, and they make a rukus. The prehistoric sound you can hear in these clips is unedited. They really are that loud!</figcaption></figure>
+<!-- /wp:embed --></div>
+    <div class="post-nav">
+        <a href="554-san-cristobel.html" class="prev"><span class="label">← Previous</span>San Cristobel</a>
+        <a href="577-flores-guatemala.html" class="next"><span class="label">Next →</span>Flores, Guatemala</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

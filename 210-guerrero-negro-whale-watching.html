@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guerrero Negro Whale Watching | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Guerrero Negro Whale Watching</h1>
+    <div class="meta">January 08, 2024 · <span class="cat">Blog Posts</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>After 2 uneventful days eating at any Taco Stand and food vendor that looked appetizing in the Tijuana Centro it was time to pack my bags and continue south.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The hostel was quiet the entire time with only 2 other guests who were assigned to the other dorm. At times It felt like having my own penthouse suite because the terrace was deserted the entire time giving me plenty of room to spread out and continue planning my future travels.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Traveling this long has its diffucultues in planning that may not happen when youre traveling for a much shorter time. Namely the distance you can/should plan. Trying to plan a one year itinerary would be tedious and could be disaterous in the event of a untimely cancelation or delay. While I have a general idea of where I want to go, I choose not to make any reservations more than a week or ahead of time giving plenty of room unexpected hassles and improvisation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I booked a ticket online the night before to take a bus from Tijuana to Gurrero Negro, a small salt mining town on the border of Baja Norte and Baha Sur, the two Mexican states that comprise of the Baja California peninsula. Not only is the town a large salt exporter, it’s also hosts the Laguna de Ojo Liebre a large body of water where the Pacific Grey Whales come in the winter to birth and raise their calf’s. At its peak every season the lagoon will host hundreds of whales and calfs sheltering in the calmer water of the lagoon until the calfs are big enough to leave in the summer for cooler waters in the Bering Strait where they will sepnd their time feeding until it’s time to return to the Mexican lagoons for the winter. The whales start showing up in December but don’t reach their peak until February and March. While my arrival in early January means it will be early in the season, I should still be able to see this natural wonder.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>12 and a half hours after departing Tijuana I arrive to a quiet Guerrero Negro at nearly 2 in the morning. I booked a hotel just a few meters away from the bus station and was in my hotel room within 10 minutes of arriving. The bus ride was long but the buses here are comfortable and a the ride passed easily while watching downloaded videos on my tablet and reading a few Chapters from my book. Some generic thriller downloaded for free from Amazon Prime.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I had called a few tour companies the in the weeks before I left as the whales are considered a must-see attraction when in this part of the world.&nbsp; Most had said the plans for the season were still not confirmed for the year because the season is at the mercy of the whales, and said to check back closer to my arrivals. Well, now it’s my first of 3 days in Guerrero Negro and all the tour companies are saying the whales have not arrived and they are not offering tours. Did I just make a trip to rural Mexico in vain? I get breakfast and try to find ways to salvage my trip.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Thankfully one of the tour operators gets back to me a few hours after I called and said they would offer a tour at 8am the next day. I make the reservation figuring a boat ride to the lagoon would be better than sitting in my hotel room. At 7:30 am the guide knocks on my door and after exchanging pleasantries ask if I have any warmer clothes. Its chilly outside but even a light jacket should be enough, right? I only packed one pair of jeans for the trip because my plans take me south to much warmer climates for the majority of my trip and, those jeans have been worm a few times already.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“I have jeans but they are dirty” I explain.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He grimaces. Himself wearing two sweatshirts, a scarf and those adventure cargo pants you buy at places like REI.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“We have rain jacks that you might be able to use”</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Sound good” I say and hop into the van.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When we arrive at the office where they begin the tours, the receptions introudices herself as Miriam, the woman I spoke to on the phone the day before. Then asks if I brought warmer clothes because its cold on the lagoon and the water spraying into the boat will make it colder.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Did you get the list of items to bring I sent you yesterday?” She asks.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Yes, I did. And like a bad tourists I looked at it and said, well I have none of those and continued on with my day. I paid and was starting to doubt my decision to just wing my clothing decisions as the rest of my tour group was bundled up for a ski trip, some in hats and gloves and long pants and large winter coats.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Another employee asks if I have anything warmer but assures me they have rain coats at the dock which I can use.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The tour starts with a through class on the life of the Pacific grey whale and about the lagoon. For the tours the lagoon is divided into 2 zone, one closer to the city and another closer to the ocean. The tour company I booked with had permits to tour the further area, allowing them to offer tour earlier in the season than some competitors. They talked about it range of the whales, from Alaska to Baja California. Its diet, amphipod crustaceans, and a litte more information on its mating habits. Did you know it takes 3 grey whales to mate? The two doing the deed and a third to hold them in place because of the wight of the 2 creatures involved. Now you do. They also had a picture of the male whale’s “Pink Floyd.” I’m sure you can deduct what that is.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Afterwards we boarded a bus that would take us to the lagoon. We drove through the town of Guerrero Negro where the guide explained how the town came to be. It was only established in the 1950’s when the salt exporting company began operations and received its name (translated to Black Warrior) after a boat that ran aground there sometime in the past.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After passing by mound of salt that were as big as a multiple story building, we arrived the dock and meet our boat captain. I also received my <s>dunce cap </s>rain jacket which I used as a makeshift blanket to cover my exposed legs. Honestly, it wasn’t too bad, the rain jacket worked well, and while it was chilly on the water, the jacket kept me comfortable until later in the morning when it warmed up.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We zoomed away from the dock and made our first stop, a barge full of salt waiting to be moved to another location. A group of Sea Lions had taken up residence here and we sunning themselves until we arrived. Most jumped into the water once we got too close but one photogenic gentleman stood up and posed for a few moments allowing us to all get a good look at him and take out photos. After a few minutes we continued further out into the weater on the search for whales we all came to see.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We rode around for hours looking for the whales, initially catching nothing but the glimpse of a tail, or back or the spray of a blowhole. Only to find the Whale had dived deep again by the time we arrived. Although I wasn’t as cold as I had been worrying I was, the spray of the water and the temperature meant things were starting to get tiring and I was convincing myself that coming this early in the season ,this was as good as it would get.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you go to the websites for these tour operators or read the blogs other post, you will see photos of the whales can be very curious about the boats, even allowing people to touch them and in some instances pushing their babies up to be viewed and photographed like the proud mothers they are. Unfortunately for us, it was still too early in the season for these types of interactions and the guides advised us of this when we arrived.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We had been on the water for hours when we saw the boats of one of the competing companies huddled together and all the other tourists, standing up. The spray of a blowhole in the middle.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As we approached the group the Tripulante, or captain shouts “con un bebe” indicating it’s a mother with a calf. The 2<sup>nd</sup> whale emerges and gives us a spray.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The boat captains have some strict rules about dealing with the whales, some things like chasing the whales are strictly prohibited, only allowing the whales to come to us when we are in the vicinity. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:embed {"url":"https://youtu.be/6HuOkH7-8-k?si=GG8p-E98D3WvjSK9","type":"video","providerNameSlug":"youtube","responsive":true,"className":"wp-embed-aspect-16-9 wp-has-aspect-ratio"} -->
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+https://youtu.be/6HuOkH7-8-k?si=GG8p-E98D3WvjSK9
+</div></figure>
+<!-- /wp:embed -->
+
+<!-- wp:paragraph -->
+<p>This is a video of a collection of clips I took of the tour. As you can see, although the whales didn’t get up close and personal as they can later in the year, you defintly get a good view of the mother and her calf. We get a good 30 minutes or so to watch as the mother and her baby transit the water, breaching the water ever few moments to give the boats a spray and catch a breath.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We then began the quick journey back to the dock, passing some sand dunes and viewing the various birds that inhabit the area. The whole lagoon is a protected area for both sea and avian wildlife. Even though we didn’t get the full experience, I still was able to get everything I hoped for by being able to see these beautiful creatures more closely than I would have otherwise and being able to check off a item on my bucket list that I didn’t have before I left. Witness the Grey Whale migration.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="205-day-1.html" class="prev"><span class="label">← Previous</span>Day 1</a>
+        <a href="214-guerrero-negro-to-mulege.html" class="next"><span class="label">Next →</span>Guerrero Negro to Mulege</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

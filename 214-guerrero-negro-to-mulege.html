@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guerrero Negro to Mulege | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Guerrero Negro to Mulege</h1>
+    <div class="meta">January 10, 2024 · <span class="cat">Blog Posts</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>Other than the Whale Watching and the salt mine, the town of Guerrero Negro didn’t offer much else for a solo traveler to do. A large collection of restaurants kept me full of Birria and Tortas for my stay there. But I made plans to move on the morning after the day of the tour.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Again, I purchased my departure ticket online having a successful trip earlier in the week and I woke up in time to catch my 8am departure out of town. The town was quiet and the ground was wet and puddles had formed indicating it has rained the night before. I retraced my steps to the bus station and walked inside. I could have just sat down and waited patiently but something told me to just make a cursory inquiry with the attendant.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Este autobus es aqui?” I ask and hand her the paper ticket I printed the night before at the hotel reception.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>She looks at the paper, “No, esta bus es a la siete” indicating this bus left at 7. The ticket clearly states an 8 am departure.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I looked confused, “Siete?, pero…” I point at the time on the ticket, 8am.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Si, el horario enlinea no es correcta” she says the schedule online isn’t correct. She then points to a sign on the wall behind me and theres a Southbound departure at 7am listed, nothing at 8am.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Well, that sucks. Were already beyond my level of Spanish and this isn’t a time to leave anything to chance. I pull out my swiss army phone and open the translator app. And type out What..are..my…options? And show her my translated message.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No problema” She smiles and starts making phone calls. After a moment she looks at me,</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Nueve media?” She asks about the 9:30 am departure.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I look at the schedule posted behind me and point to the 9;30 am departure listed going southbound. The shakes her head in affirmation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Si” I reply. &nbsp;Next time I will just purchase the ticket at the station.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>She types away on the computer and a new ticket prints out. She stamps the back and writes Cambio hora a 9:30am. The front of the ticket still has my old itinerary on it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I asked to drop my bag as I walk the café next door to get a coffee and return a few minutes later and take a seat on the bench in the terminal. I pull out my Mexico guide book figuring this is as good time as any to start planning future legs of my journey. I didn’t do much reading though as the morning happenings of a small-town Mexican bus station are much more interesting.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The bus companies also act as package transport companies in the morning seems to be when everyone come to pick up the parcels that were delivered overnight. A group of construction workers arrive to pick up a hot water heater. A man in cowboy boots gives the attendant a paper and a few moments later I hear the clucking of a few chickens from the wall behind me. They give the booted man a crate full of at least 2 chickens and off he goes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Eventually it’s time to board the bus which of course can’t be done without confusion. One man tags my bag a hands me a receipt while the driver looks at my ticket. I can see the confusion but show him on the back where the stamp and correction are. He then points to the seat number.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“No se” I shrug.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He replies something else in Spanish and motions for me to step aside while he checks in the other passengers. Afterwards he walks back into the station eventually returning with 32 written on my ticket indication I do have a seat. I board and a few minutes later we depart the station.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I had heard people call Baja the wild west before I arrived and it’s not more apparent than now as we traverse the Highway 1 down the peninsula. The scene is similar to the US Southwest with Saguaro cactus and Yucca plants passing out the windows, catching glimpses of the Pacific Ocean in the distance as we go. Today’s journey will take us to Loreto, a city on the eastern coast of the Baja Peninsula along the Sea of Cortez/Bay of California.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My intended destination now is not Loreto though. I have to go there to pick up a car rental because it’s becoming very apparent that the busses can only get you so car in Baja. To truly experience some things, you need to be able to trek off on your own once in a while. I’ll get the car in Loreto then backtrack to another small town called Mulege which will be my base for a few days as we explore the beaches of the Bahia Concepcion.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The bus ride is uneventful again and I take the opportunity to catch up on writing these posts and enjoy the scenery as it goes by. I was able to ask the woman sitting across the aisle from me a few basic things about Guerrero Negro and realized my Spanish speaking skills were a lot better than I had realized. She offered me a burrito which I happily obliged.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Arriving in Loreto, it’s apparent that American tourism is the major driver of the economy here. The signs for business advertise in both English and Spanish and the license plates of the vehicles are almost even split between Mexican and American states.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The car rental office is a short 2 km from the bus station, again, walking distance. I lug my bags onto my back and hike the short distance and pick up a Toyota Corolla and begin the 90 drive back from which I came, back to Mulege.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I arrive back in Mulege at about 6pm and follow the GPS directions to the hostel I booked a few nights before. The streets are small and narrow, and after a few turn I see the sign for Casa Renta Dona Luisa, except the lights are off, the door is locked and it doesn’t appear to be open.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I find the number in the reservation confirmation from Booking.com and call it, no answer. Just as I figured. I call booking.com and the girl on the other end try to call herself and again no answer. She tells me their policy is to give the owner 30 minutes to call back and if not they automatically refund my reservation and will even compensate me for finding new accommodations. This is a tourist town, so a hotel should not be too hard to find. I drive around the corner and find a small plaza lined with restaurants. And since I had only a few snacks on the bus and coffee for breakfast I was starved.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>An abuela in a café made me some chicken enchiladas and I connected to the WIFI trying to find a new room. Thankfully there was a nice hotel just on the other side of the plaza and even recommended by an American retiree who I had shared the story of my plight with.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I wonder if anything will go as planned?</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="210-guerrero-negro-whale-watching.html" class="prev"><span class="label">← Previous</span>Guerrero Negro Whale Watching</a>
+        <a href="217-mulegé.html" class="next"><span class="label">Next →</span>Mulegé</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

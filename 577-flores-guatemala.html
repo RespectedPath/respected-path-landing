@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flores, Guatemala | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Flores, Guatemala</h1>
+    <div class="meta">March 17, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>Finally, I had decided I had seen enough of Mexico for this trip. But, decided this here meant some major changes to my plans and goals. Like I said earlier, I had a loose goal to visit every country in Central America. Dipping out of Mexico to Guatemala now means I’ll have to skip Belize. After a few hours of careful consideration I decided that my idea of visiting every country wasn’t more important that my other goal of doing whatever I want. A tour agency in Palenque was advertising a shuttle from Palenque to Flores, Guatemala for about $40 USD. 6 hours in total and a driver on both sides of the border, this was the best way to leave Mexico since no bus companies operated the route.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Once out of Mexico the best/easiest way to travel is using the tourist shuttles. Locals predominantly use the famous Chicken Busses (retired American School busses, that have been “enhanced” locally). The Chicken busses are quite the cultural experience, the tourist shuttles have better schedules (usually), go direct to where you want to go and are by far more comfortable. Safety and security are real concerns on the chicken busses also. Even locals laugh uncomfortably when talking about it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As smoothly as this adventure had been, it was time for a hiccup. If you remember when I arrived in Mexico I had to have an extra form and pay a fee to remain in Mexico for than a few days. I had to keep this form with me and return it when I exited Mexico. I had the form in my passport holder, I just didn’t realize that the date stamp was incorrect. I arrived in Mexico on January 3, 2024. No one had changed the year on the passport stamp and my passport and my migration form said January 3, 2023. Intitlaly it looks like I’m well outside my 180 toursit permit. Of course everything is digital nowadays, right? Or will a corrupt Mexican official use this as an excise to extort a “propina” from me? It doesn’t help this border crossing has recent reports of border officials asking for a tip.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We made our way out of Palenque and through various rural Mexican towns and arrived at the border. Our group of tourist were the only ones there except for a few local milling about for whatever reason. We are instructed to leave our luggage outside and line up outside on office. An office? Why isn’t there just a desk like at airport, or even in Tijuana? I’m told to go inside first and the official closes the door behind me. I’m about to get shook down aren’t I? I hand him my passport and exchange pleasantries.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Hablas español?” He asks</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Un poquito” I reply. Making the international hand gesture for small with my thumb and pointer finger.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I hand him my passport and paperwork. And he scans it in the computer. It doesn’t scan. He then starts flipping through my passport looking for my entry stamp. He finds it. And the starts looking for another one because obviously Jan 3, 2023 isnt my entry date. I’m pretending not to know its incorrect so that it doesn’t confuse things any more.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“When did you arrive in Mexico” he asks in English.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“January third of this year” I reply.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Where are you going?” he asks.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Guatemala?” I say questionably as if there anywhere else to go at this land border crossing?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He looks at the stamp on my migration paperwork, also says 2023.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>At this point I’m just playing stupid. Sitting there with a dumb tourist grin on my face.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He points to the migration paperwork where it says 180 days authorized.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Yes, thank you for that. Maybe next time I will spend more time in Mexico” I say in English.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He doesn’t understand what I’m saying. He also is visibly starting to sweat, it’s not that hot in here. He starts typing my information into the computer manually. Still sweating. Me, just sitting there patiently.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He starts reading something aloud in Spanish.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Yes, Mexico is a beautiful country. I wish to explore more someday.” I speak.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>He hands me back my passport, keeps the migration form, as hes supposed to, and says “buen viaje” or good travels. He stamps my passport (with the correct date) and hands it back to me</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Listo?” I ask.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>“Listo” he says and motions for me to leave. He hands me back my passport, but is still pointing to the “180 days” written on the migration paperwork.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Did I get recorded as an overstay in the Mexican migration computer? I have no clue. Time will tell. I’m just glad to be moving on.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Formalities on the Guatamalan side were a lot less exciting. Just stamp and “bienvenidos” from a friendly Guatemalan migration employee and I’m back in the shuttle for another 3 hours to Flores.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":579,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240224_122849-large.jpeg" alt="" class="wp-image-579" /><figcaption class="wp-element-caption">Welcome to Guatemala.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><strong>Flores</strong>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Flores, Guatemala is a backpacker haven in the northern part of the Country. A city on an island in the middle of a lake, there’s definantly a tinge of Venetian vibes as you stroll its narrow streets (which traditional cars are not allowed) with the sound of the lake lapping just a few meters away. The town itself is just a mix of Hostels, hotels restaurants and convenience stores. Everything wary travelers need. The town in the gateway for the famous Tikal archeological site, Guatemala’s most famous set of Mayan ruins. Most people only spend a few days here though as there really isn’t much of anything else to see.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":581,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_175351-large.jpeg" alt="" class="wp-image-581" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":583,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240224_165642-large.jpeg" alt="" class="wp-image-583" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":582,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_175328_01-large.jpeg" alt="" class="wp-image-582" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Tours for Tikal start early. The busses leave from Flores at 4am. This ensures you can get to the site at sunrise, before masses of tourist arrive from other cities later in the morning. It’s actually for the best. Although the group will be large, its easy to spread out in the expansive site that is Tikal and not be shoulder to shoulder with tourists.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The guide for our tour today is a local to the site. He explained how the area was only designated a national park in the early 90’s and how he grew up climbing the various temples and pyramids as a kid. He worked with the archaeology teams helping to uncover and restore various structures in the site. He also has a Texas and British accent having never been to either. He learned English by watching English media from the US and the UK. He knew all about the flora and fauna of the site. It was much better experience than someone just reciting facts they were given by the tourist office.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>For me though, this was my 4<sup>th</sup> set of ancient ruins in just a few weeks. However amazing and astonishing they are, you can only see so much before the awe wears off. Tikal is beautiful. Tikal was amazing. Tikal was overload for me. In other circumstances this could have been an amazing experience. This time was just a check in the box.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":585,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_102145-large.jpeg" alt="" class="wp-image-585" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":587,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_085056-large.jpeg" alt="" class="wp-image-587" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":588,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_092317-large.jpeg" alt="" class="wp-image-588" /><figcaption class="wp-element-caption">An interesting view of an excavation and restoration underway. The Top has been full excavted and restored. The trees and dirt still in place in the middle and center, left, new midern bricks restoring the temple to its former glory.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":586,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240225_094315-large.jpeg" alt="" class="wp-image-586" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>We left the site mid-morning and I got back to the hostel with a mission to mix things up a bit. Being a passive tourist just wasn’t cutting it anymore. But I didn’t know what to do. Up until this point I had been following a guidebook, going to places and doing thing that are professional recommended. Obviously, most people who buy those don’t have time to do everything it recommends and never realize just how repetitive it can be. Big Church, check. Ancient history, check. List of restaurants with similar food, check. If you’re only seeing a few places this is sufficient. If you have time to see it all, you probably shouldn’t.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I spent the evening perusing the offerings of the local tour operators thinking about how to mix things up. What did I need to do to keep the fire ignited in me, to keep this trip exciting?</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="562-palenque.html" class="prev"><span class="label">← Previous</span>Palenque</a>
+        <a href="594-semuc-champey.html" class="next"><span class="label">Next →</span>Semuc Champey</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

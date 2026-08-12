@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sayulita | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Sayulita</h1>
+    <div class="meta">January 31, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>Even though intercity buses are one of the more popular modes of travel in México, there isn’t one national bus company like in the United States. Multiple lines run mostly regional routes which means piecing together a routing can be a challenge. I mostly use the website Rome2rio.com to figure out what companies go where but even then; I figure the IT department at most of these businesses are not the highest priority and have found schedules to be completely wrong and websites broken or non-existent. Buying a ticket at the station is really your most reliable option for getting around México.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I had found what I thought would be a competent itinerary from Mazatlán to the social media famous pueblo of Sayulita, only to find after I arrived the bus line I had chosen did not stop at the Central Station, instead having its own terminal in a different part of town. Thankfully there was a company that could take me to Tepic, where I would connect to another line to Bucerias and then another local bus to Sayulita.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The ride to Tepic was unproblematic. The scenery changes greatly on this side of the Sea of Cortez. Gone are the Saguaros and desert landscapes, replaced with more lush tropical trees and plants. The first Blue Agave farms appear, the plant used to create México’s famous Tequila. After arriving at the Tepic Station, I found the desk for my connecting bus and purchased a ticket.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Rome2rio had said it would only be a 1-hour bus ride to Bucerias which I did not double check on Google Maps. Had I done that I would have realize there was no way a bus was going to cover 140km in an hour. My Spanish has done me well so far in this journey but I think I misunderstood the agent when she asked which bus I wanted. I just asked for the next one, but I think she was trying to say there were multiple routes, a direct service and a local service. 4 hours into my 1 hour ride and I was getting a little antsy because the last bus from Bucerias to Sayulita left at 7:30pm, according the not so reliable Rome2rio and we were approaching that time quickly.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>To my relief, the bus made a turn off the main highway and started making stops at the small coastal pueblos of the Nayarit state. I saw on Google Maps that we were approaching Sayulita and when the driver announced the stop, I grabbed my things and just got off there. Whatever works I suppose.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I discovered that Sayulita is not a new entrant to the Mexican vacation game. Its been a popular destination for decades, mostly for surfers who visit for its ideal surf conditions and even more so for beginners learning how to ride the waves. It has risen in prominence more so in recent years due to TikTok and GenZ influencers promoting the city which is how I found out about it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>After hiking down a dark road from the highway to my Hostel, checking in and getting situated I ventured out to find some food. I found Sayulita main plaza to be crowded with cars, rented Golf Carts and ATV’s and people of all ages. It was obvious though the demographic did trend younger. A group from my Hostel invited me to venture out with them to a local club which I now regrettably went. Nothing bad happened just imbibed on more Cervezas than intended and paid for it the next day. It was a good day for laundry and to get caught up on writing anyways.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The next morning I was feeling a little more like myself and after receiving some advice for better beaches in the area from my friendly Canadian roommates I ventured out early to explore Sayulita a little more thoroughly. Its readily apparent the massive influx of tourists has taken its tool on the little Pueblo of Sayulita (another Pueblo Magico to check off the list). Hundreds of restaurants and bars and shops line its tiny streets waiting to part the tourist from their money.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":358,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_083916-large.jpeg" alt="letras Sayulita" class="wp-image-358" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":359,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_083659-large.jpeg" alt="" class="wp-image-359" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Beach chairs for rent by the day are packed tightly on the beach, arrive early for the best location. Arrive earlier to watch as the Surfers take advantage of the mornings rising tide to get a few rounds in before the beach becomes crowded with vacationers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":362,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_084202-large.jpeg" alt="" class="wp-image-362" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":363,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_084211-large.jpeg" alt="" class="wp-image-363" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>As nice as the beach in Sayulita is, crowds are not my scene. Not when I have an option anyways and I started a hike outside the town towards the surrounding jungles. Another attraction of Sayulita is its many trails cut through the surrounding jungles. Some more so than others. The path I was following this morning was well established, obviously used by many people before in search of more solitude than the Playas de Sayulita could provide.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A short 2ish KM later I emerged from the jungle to find the deserted Playa Malpaso. And set up my things for the day. Only the occasional passerby made an appearance and anyone deciding to set up camp on this beach could do so with hundreds of yards to spare. Only after running out of sunscreen and water did I decide to leave early in the afternoon returning on a slightly different route which allowed me to see the other side of Sayulita.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"lightbox":{"enabled":true},"id":364,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_090454-large.jpeg" alt="" class="wp-image-364" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"lightbox":{"enabled":true},"id":365,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240128_121341-large.jpeg" alt="" class="wp-image-365" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>The North side of Sayulita or as locals will call, the other side of the bridge, is a much more tranquil and relaxing place compared to the exciting center. Airbnb’s and boutique hotels line the hills giving sea views to those willing to pay the price. Neighborhood bars and restaurants are set up beneath family homes and along sidewalks to sell Daiquiris, Tacos and Tortas to tourists. I didn’t stop though as the Hostel was showing streams the NFL conference championships that afternoon.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My time was short in Sayulita as I’m already behind my intended schedule for this adventure. I really did like the overall vibe of the city, the mix between the calm and the chaotic, separated by the bridge and the Rio Sayulita. I can’t help but wonder what this town would have been like 5-10 years ago. Maybe, like so many social media trends, the hype of this beach town will fade and I can visit Sayulita another, more peaceful time.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="340-mazatlán.html" class="prev"><span class="label">← Previous</span>Mazatlán</a>
+        <a href="375-guadalajara.html" class="next"><span class="label">Next →</span>Guadalajara</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

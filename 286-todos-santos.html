@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todos Santos | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Todos Santos</h1>
+    <div class="meta">January 18, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:image {"id":292,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_090359-1.jpeg" alt="" class="wp-image-292" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Mexico’s Pueblo Magico’s a towns chosen by the Mexican Secretary for Tourism as towns that offer tourists “cultural richness, historical relevance, cuisine, art crafts, and great hospitality." There’s currently 132 Pueblo Magicos in Mexico and Todos Santos is my second. The first was Loreto and my stop there was less than 24 hours.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Located about an hour North of Cabo San Lucas, Baja’s ubiquitous resort destination Todos Santos is a popular day trip for people wanting to experience a little more authentic Mexico. The tour buses arrive late in the morning, but I was able to get an early start and have many locations in the town to myself before the throngs of tourists arrived from the resorts further south.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The storefronts are filled with boutiques selling artisan goods, restaurants and art galleries. It gives me “tropical Santa Fe” vibes for those familiar with the New Mexican capital. I walk the empty streets as storekeepers and restauranters readies their businesses for the wave of North American tourists arriving in a few hours.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":300,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_090540-large.jpeg" alt="" class="wp-image-300" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":295,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_103043-large.jpeg" alt="" class="wp-image-295" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":298,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_100657-large.jpeg" alt="" class="wp-image-298" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":297,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_093637-large.jpeg" alt="" class="wp-image-297" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>As most people who visit Todos Santos are there for a few hours, maybe an overnight stay at one of its many boutique hotels, a lot of people will lack the desire to explore the area more. What they will usually miss are the miles of wide, deserted beaches that hide behind a small grouping of hills that guard the city from the Pacific Ocean behind them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I had seen a few trails on the All Trails app on my phone and after confirming their accuracy with some fellow travelers at my hostel I decided to trek out on my own in the afternoon for a beach day. The closest beach was about 1.5 km from the hostel and after packing my things off I went. Until turned the first corner and saw this.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":296,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_124625-large.jpeg" alt="" class="wp-image-296" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Let’s turn back for some proper shoes, as all I was wearing were my beach flip flops.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>And on my second try I finally was able to get to the other side of the mountains and was greeted by this view.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":294,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_152942-large.jpeg" alt="" class="wp-image-294" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Now hiking down the mountain, I find completely deserted beach, and set out my things. I was warned about the surf there the day before but it didn’t really set in until I started to walk along the water. I’m 6’1” and some waves were feet taller than me. I got in about to my knees and decided the beach would be better enjoyed from the sand than in the water. I was there alone and didn’t want to risk getting sucked into the Pacific abyss.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A few hours passed with ease as I watched whales play in the distance, the birds hunting fish from the sky and fisherman retuning to the port a few km down the beach with their catch. A few times getting a little more courage to get into the water only to see a massive wave crash on the beach soon after and remembering its probably not the best idea.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":302,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240117_143931-large.jpeg" alt="" class="wp-image-302" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":303,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-303" /><figcaption class="wp-element-caption">DCIM\100GOPRO\GOPR0231.JPG</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":304,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-304" /><figcaption class="wp-element-caption">DCIM\100GOPRO\GOPR0226.JPG</figcaption></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>One of the many reasons I enjoy this type of travel it to find more the hidden gems of the world. Todos Santos is a beautiful city, with so much to offer visitors. But, if you just put a little more effort than you would had you bought a package tour here you can be rewarded with treasures like these.</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="257-la-paz.html" class="prev"><span class="label">← Previous</span>La Paz</a>
+        <a href="308-los-cabos.html" class="next"><span class="label">Next →</span>Los Cabos</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>

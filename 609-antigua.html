@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antigua | The Respected Path</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: #d4c4a8;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+}
+
+/* Navigation */
+nav {
+    background: #1a5276;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+}
+.nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+nav .logo-link img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+nav .links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    margin-left: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+nav .links a:hover { color: #f4a261; }
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Hero */
+.hero {
+    background: #faf6f0;
+    padding: 50px 25px 40px;
+    text-align: center;
+    border-bottom: 3px solid #f4a261;
+    margin-bottom: 35px;
+}
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+.hero .tagline {
+    font-size: 1.15em;
+    color: #4a919e;
+    font-style: italic;
+}
+.hero .post-count {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ee6b6e;
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Post cards on index */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    border-left: 4px solid #4a919e;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-left-color: #f4a261;
+}
+.post-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.post-card h2 a {
+    color: #1a5276;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.post-card h2 a:hover { color: #ee6b6e; }
+.post-card .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+.post-card .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+.post-card .excerpt {
+    color: #555;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+/* Article page */
+article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 45px;
+    margin: 30px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2em;
+    font-weight: 800;
+    color: #1a5276;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+article .meta {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e8dcc8;
+}
+article .meta .cat {
+    color: #4a919e;
+    font-weight: 600;
+}
+article .content {
+    font-size: 1.05em;
+    line-height: 1.75;
+}
+article .content p { margin-bottom: 1.2em; }
+article .content h2, article .content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1a5276;
+    margin: 30px 0 15px;
+    font-weight: 700;
+}
+article .content h2 { font-size: 1.5em; }
+article .content h3 { font-size: 1.2em; }
+article .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+article .content blockquote {
+    border-left: 4px solid #f4a261;
+    padding-left: 25px;
+    margin: 25px 0;
+    color: #555;
+    font-style: italic;
+    font-size: 1.05em;
+}
+article .content ul, article .content ol {
+    margin: 15px 0 15px 30px;
+}
+article .content li { margin-bottom: 8px; }
+
+/* Post navigation */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e8dcc8;
+    gap: 20px;
+}
+.post-nav a {
+    flex: 1;
+    padding: 15px 20px;
+    background: #faf6f0;
+    border-radius: 8px;
+    color: #1a5276;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: background 0.2s;
+}
+.post-nav a:hover { background: #e8dcc8; }
+.post-nav .prev { text-align: left; }
+.post-nav .next { text-align: right; }
+.post-nav .label {
+    display: block;
+    font-size: 0.75em;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 25px;
+    color: #888;
+    font-size: 0.85em;
+}
+footer a { color: #4a919e; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero h1 { font-size: 2em; }
+    article { padding: 25px; }
+    article h1 { font-size: 1.6em; }
+    .post-card { padding: 20px; }
+    nav .links a { margin-left: 15px; font-size: 0.75em; }
+    .post-nav { flex-direction: column; }
+}
+</style>
+
+</head>
+<body>
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo-link">
+            <img src="photos/logo.png" alt="The Respected Path">
+        </a>
+        <div class="links">
+            <a href="index.html">All Posts</a>
+            <a href="index.html#posts">Archive</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+<article>
+    <h1>Antigua</h1>
+    <div class="meta">March 23, 2024 · <span class="cat">Uncategorized</span></div>
+    <div class="content"><!-- wp:paragraph -->
+<p>Surrounded by active Volcanos, the colonial Guatemalan city of Antigua charms and delights travelers from around the world. Currently, it serves as the hub of the Guatemalan tourism industry with most tours and expeditions beginning and/or ending here. Accommodations and comida (español for food) are available for all budgets and tour companies and language schools dot the streets seeking to part curious tourists from their money (in Guatemala called the Quetzal, after the national bird, the Quetzal, whose tail feathers were used by ancient Mayans as currency).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Like many other Central American colonial cities, the buildings are brightly colored giving a certain vibrancy to the streets unmatched in most other places of the world. The backdrop of the Volcanoes makes the vistas of Antigua unique and astonishing.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":612,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/placeholder.png" alt="" class="wp-image-612" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":611,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240301_084356-large.jpeg" alt="" class="wp-image-611" /></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":614,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240301_090730-large.jpeg" alt="" class="wp-image-614" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>I opted for 3 days here. Mostly to rest and process the trauma of flushing myself down underground rivers and tossing myself of precarious cliffsides in Semuc Champey a few days before. But also, to ensure that I could see all of Antigua one could see before heading on. Admittedly, these large, tourist centric cities have not been my favorite parts of this journey but still worth visiting and exploring. Savoring local flavors or just louging in the courtyard of the hostel with a book and a beer help pass the time.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>More adventurous tourists can opt for an overnight hike to the Acatenago volcano. 2 days of hiking and one overnight stay in huts on the mountain. I instead opted for the easier half day trek to the Pacaya volcano and roasting marshmallows in the escaping heat from the ground. It was all the adventure I cared to partake of while recovering from Sumec Champey.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The bus ride to Pacaya winds though many mountain villages surrounding Antigua giving a glimpse into everyday life for Guatemalans not vested in the tourism industry. Eventually you arrive at the gates of the Pacaya Volcano park and local boys offer to sell walking sticks to help with your ascent. Horses are available to rent inside the gates for those not desiring much physical activity. I opted for the old-fashioned walking hike and our group lumbered up the mountain slowly, the horse riders following behind.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Unfortunately today we hiked to the summit of a neighboring hill only to find clouds completely obscuring the view of Pacaya. What to do? Mill about and talk to your fellow travelers I guess. People from all over the world visit Guatemala Canadians, Germanys and everyone has various reasons for their travels. Today a lot of people were testing their endurance to judge if they wanted to do the more arduous, overnight Acatenago hike in the coming days.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gallery {"linkTo":"none"} -->
+<figure class="wp-block-gallery has-nested-images columns-default is-cropped"><!-- wp:image {"id":616,"sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large"><img src="photos/20240301_163910.jpeg" alt="" class="wp-image-616" /></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:paragraph -->
+<p>Thankfully in the following moments the winds picked up a bit, blowing away the coulds obscuring the picturesque Pacaya Volcano. Everyone took the fleeting opportunities to get their selfies and other photos as the clouds moved in and out of the frame. Eventually we all had our fill and continued further down the trail to a lava field where our guides had built a lava rock oven. A bag of marshmallows appeared from someone’s back pack and after impaling them with wooden skewers let the heat of the volcano warm our snack. Carefully wathing out for the “forbidden chocolate chips”, little pieces of lava rock that ended up on the ‘mellows during their roasting.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:jetpack/tiled-gallery {"columnWidths":[["66.76150","33.23850"],["100.00000"]],"ids":[617,623,618,619]} -->
+<div class="wp-block-jetpack-tiled-gallery aligncenter is-style-rectangular"><div class="tiled-gallery__gallery"><div class="tiled-gallery__row"><div class="tiled-gallery__col" style="flex-basis:66.76150%"><figure class="tiled-gallery__item"><img alt="" data-height="720" data-id="617" data-link="https://respectedpath.wordpress.com/?attachment_id=617" data-url="photos/20240301_164617-large.jpeg?w=1024" data-width="1280" src="photos/20240301_164617-large.jpeg" /></figure></div><div class="tiled-gallery__col" style="flex-basis:33.23850%"><figure class="tiled-gallery__item"><img alt="" data-id="623" data-url="photos/20240301_164610-large.jpeg" src="photos/20240301_164610-large.jpeg" /></figure></div><div class="tiled-gallery__col"><figure class="tiled-gallery__item"><img alt="" data-height="1280" data-id="618" data-link="https://respectedpath.wordpress.com/?attachment_id=618" data-url="photos/20240301_170133-large.jpeg?w=576" data-width="720" src="photos/20240301_170133-large.jpeg" /></figure></div><div class="tiled-gallery__col"><figure class="tiled-gallery__item"><img alt="" data-height="1280" data-id="619" data-link="https://respectedpath.wordpress.com/?attachment_id=619" data-url="photos/20240301_170719-large.jpeg?w=576" data-width="720" src="photos/20240301_170719-large.jpeg" /></figure></div></div></div></div>
+<!-- /wp:jetpack/tiled-gallery -->
+
+<!-- wp:paragraph -->
+<p>Antigua was a nice respite from the more adventurous activities from the days before. When visiting Guatemala its nearly impossible to skip this beautiful city and you shouldn’t. The breathtaking vistas from the city streets and the adventures to be had near and far mean Antigua is a sight to be had when in Central America</p>
+<!-- /wp:paragraph --></div>
+    <div class="post-nav">
+        <a href="594-semuc-champey.html" class="prev"><span class="label">← Previous</span>Semuc Champey</a>
+        <a href="626-lake-atitlan.html" class="next"><span class="label">Next →</span>Lake Atitlan</a>
+    </div>
+</article>
+</div>
+<footer>
+    <p>From <a href="index.html">The Respected Path</a></p>
+</footer>
+</body>
+</html>
