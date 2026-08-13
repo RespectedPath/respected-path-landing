@@ -3,570 +3,535 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Respected Path</title>
-
+<title>The Respected Path — A Travel Journal</title>
+<meta name="description" content="Notes from the road: Baja California to Naples. A travel journal across México, Central America, and Europe.">
+<link rel="icon" type="image/png" href="photos/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
+:root {
+  --paper:   #f6eddc;
+  --paper-2: #efe2cc;
+  --card:    #fdf8ee;
+  --navy:    #1d5b79;
+  --navy-dk: #123c53;
+  --ink:     #16303f;
+  --ink-60:  rgba(22,48,63,.62);
+  --ink-35:  rgba(22,48,63,.35);
+  --line:    rgba(29,91,121,.16);
+  --line-2:  rgba(29,91,121,.32);
+  --teal:    #468b97;
+  --teal-lt: #7fb0b8;
+  --coral:   #ef6262;
+  --coral-dk:#c94f4f;
+  --amber:   #f3aa60;
+  --amber-dk:#d98b3a;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:  'Libre Franklin', 'Franklin Gothic Medium', -apple-system, 'Segoe UI', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
 body {
-    font-family: 'Merriweather', Georgia, serif;
-    line-height: 1.7;
-    color: #2c3e50;
-    background: #d4c4a8;
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(244,162,97,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(74,145,158,0.08) 0%, transparent 50%);
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--amber); color: var(--navy-dk); }
+::-webkit-scrollbar { width:10px; }
+::-webkit-scrollbar-track { background: var(--paper-2); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius:5px; }
+a { color: inherit; }
+img { display:block; }
+
+/* ---------- grain ---------- */
+.grain {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Navigation */
+/* ---------- nav ---------- */
 nav {
-    background: #1a5276;
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(26,82,118,0.3);
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(246,237,220,.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
 }
 .nav-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1160px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; gap: 12px;
 }
-nav .logo-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1.15em;
-    letter-spacing: 1px;
+.nav-logo { width: 34px; height: 34px; border-radius: 50%; }
+.nav-name {
+  font-family: var(--serif); font-weight: 500; font-size: 1.15rem;
+  letter-spacing: .02em; color: var(--navy-dk); text-decoration: none;
+  flex: 1;
 }
-nav .logo-link img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    background: #fff;
-    padding: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+.nav-links { display: flex; gap: 26px; }
+.nav-links a {
+  text-decoration: none; font-size: .82rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-60);
+  position: relative; padding: 4px 0; transition: color .25s;
 }
-nav .links a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    margin-left: 25px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: color 0.2s;
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+  background: var(--coral); transition: width .3s cubic-bezier(.4,0,.2,1);
 }
-nav .links a:hover { color: #f4a261; }
+.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover::after { width: 100%; }
 
-/* Container */
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 25px;
-}
-
-/* Hero */
+/* ---------- hero ---------- */
 .hero {
-    background: #faf6f0;
-    padding: 50px 25px 40px;
-    text-align: center;
-    border-bottom: 3px solid #f4a261;
-    margin-bottom: 35px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(120% 140% at 50% -20%, #2a6d8f 0%, var(--navy) 45%, var(--navy-dk) 100%);
+  color: var(--paper);
+  padding: 96px 24px 130px;
 }
+.hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 48px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: .78rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--amber); margin-bottom: 22px;
+}
+.hero-eyebrow::before { content:''; width: 34px; height: 1px; background: var(--amber); }
 .hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.8em;
-    font-weight: 800;
-    color: #1a5276;
-    margin-bottom: 10px;
-    letter-spacing: -1px;
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(3rem, 7.4vw, 6.2rem);
+  line-height: 1.02; letter-spacing: -0.01em; margin-bottom: 26px;
 }
-.hero .tagline {
-    font-size: 1.15em;
-    color: #4a919e;
-    font-style: italic;
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--amber); }
+.hero-sub {
+  max-width: 46ch; font-size: 1.06rem; font-weight: 400;
+  color: rgba(246,237,220,.82); margin-bottom: 40px;
 }
-.hero .post-count {
-    display: inline-block;
-    margin-top: 15px;
-    background: #ee6b6e;
-    color: #fff;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; text-decoration: none; font-size: .85rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 999px;
+  transition: transform .25s, box-shadow .25s, background .25s, color .25s;
+}
+.btn-solid { background: var(--coral); color: #fff; box-shadow: 0 6px 22px rgba(239,98,98,.35); }
+.btn-solid:hover { background: var(--coral-dk); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(239,98,98,.45); }
+.btn-ghost { border: 1px solid rgba(246,237,220,.45); color: var(--paper); }
+.btn-ghost:hover { background: rgba(246,237,220,.12); transform: translateY(-2px); }
+.hero-badge { position: relative; width: clamp(200px, 24vw, 300px); }
+.hero-badge img { width: 100%; height: auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,.35)); }
+.hero-badge::after {
+  content: ''; position: absolute; inset: -14%; z-index: -1; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(243,170,96,.28), transparent 70%);
+}
+/* sunset rings */
+.rings { position: absolute; z-index: 1; right: -6%; bottom: -32%; width: 62vw; max-width: 900px; opacity: .55; pointer-events: none; }
+
+/* stats bar */
+.stats {
+  position: relative; z-index: 3;
+  max-width: 1160px; margin: -64px auto 0; padding: 0 24px;
+}
+.stats-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 20px; box-shadow: 0 24px 60px rgba(18,60,83,.14);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+.stat { padding: 28px 26px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: none; }
+.stat b {
+  display: block; font-family: var(--serif); font-weight: 500;
+  font-size: 2rem; line-height: 1.1; color: var(--navy);
+}
+.stat span {
+  font-size: .74rem; font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-60);
 }
 
-/* Post cards on index */
-.post-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 22px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-    border-left: 4px solid #4a919e;
-    transition: transform 0.2s, box-shadow 0.2s;
+/* ---------- section shell ---------- */
+section { max-width: 1160px; margin: 0 auto; padding: 92px 24px 8px; }
+.sec-head { margin-bottom: 44px; }
+.sec-kicker {
+  font-size: .78rem; font-weight: 600; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--coral); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
 }
-.post-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    border-left-color: #f4a261;
+.sec-kicker::before { content:''; width: 34px; height: 1px; background: var(--coral); }
+.sec-title {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; color: var(--navy-dk);
 }
-.post-card h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.35em;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-.post-card h2 a {
-    color: #1a5276;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.post-card h2 a:hover { color: #ee6b6e; }
-.post-card .meta {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8em;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
-}
-.post-card .meta .cat {
-    color: #4a919e;
-    font-weight: 600;
-}
-.post-card .excerpt {
-    color: #555;
-    font-size: 0.95em;
-    line-height: 1.6;
-}
+.sec-title em { font-style: italic; color: var(--teal); }
 
-/* Article page */
-article {
-    background: #fff;
-    border-radius: 12px;
-    padding: 40px 45px;
-    margin: 30px 0;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+/* ---------- route ---------- */
+.route-wrap { position: relative; }
+.route-scroll {
+  overflow-x: auto; padding: 26px 4px 30px;
+  scrollbar-width: thin; scrollbar-color: var(--teal) transparent;
 }
-article h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2em;
-    font-weight: 800;
-    color: #1a5276;
-    margin-bottom: 12px;
-    line-height: 1.2;
+.route-svg { display: block; min-width: 980px; width: 100%; height: auto; }
+.route-path-line { stroke-dasharray: 14 10; stroke-linecap: round; }
+.stop { cursor: pointer; }
+.stop circle.halo { transition: r .3s, opacity .3s; }
+.stop-label {
+  font-family: var(--sans); font-size: 12.5px; font-weight: 600;
+  letter-spacing: .06em; fill: var(--ink-60); text-transform: uppercase;
+  transition: fill .25s;
 }
-article .meta {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.85em;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #e8dcc8;
+.stop.active .stop-label, .stop:hover .stop-label { fill: var(--navy-dk); }
+.stop-meta {
+  font-family: var(--sans); font-size: 10.5px; fill: var(--ink-35);
+  letter-spacing: .04em;
 }
-article .meta .cat {
-    color: #4a919e;
-    font-weight: 600;
+.route-legend {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .8rem; color: var(--ink-60); padding: 0 4px;
 }
-article .content {
-    font-size: 1.05em;
-    line-height: 1.75;
-}
-article .content p { margin-bottom: 1.2em; }
-article .content h2, article .content h3 {
-    font-family: 'Montserrat', sans-serif;
-    color: #1a5276;
-    margin: 30px 0 15px;
-    font-weight: 700;
-}
-article .content h2 { font-size: 1.5em; }
-article .content h3 { font-size: 1.2em; }
-article .content img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-article .content blockquote {
-    border-left: 4px solid #f4a261;
-    padding-left: 25px;
-    margin: 25px 0;
-    color: #555;
-    font-style: italic;
-    font-size: 1.05em;
-}
-article .content ul, article .content ol {
-    margin: 15px 0 15px 30px;
-}
-article .content li { margin-bottom: 8px; }
+.route-legend b { color: var(--navy); font-weight: 600; }
 
-/* Post navigation */
-.post-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    padding-top: 25px;
-    border-top: 2px solid #e8dcc8;
-    gap: 20px;
+/* ---------- filter chips ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-size: .82rem; font-weight: 500;
+  padding: 9px 18px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: transparent; color: var(--ink-60);
+  cursor: pointer; transition: all .25s;
 }
-.post-nav a {
-    flex: 1;
-    padding: 15px 20px;
-    background: #faf6f0;
-    border-radius: 8px;
-    color: #1a5276;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 0.9em;
-    transition: background 0.2s;
-}
-.post-nav a:hover { background: #e8dcc8; }
-.post-nav .prev { text-align: left; }
-.post-nav .next { text-align: right; }
-.post-nav .label {
-    display: block;
-    font-size: 0.75em;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-}
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--teal)); }
+.chip:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+.chip.active { background: var(--navy); border-color: var(--navy); color: var(--paper); }
+.chip .n { font-size: .72rem; opacity: .65; }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 40px 25px;
-    color: #888;
-    font-size: 0.85em;
+/* ---------- journal grid ---------- */
+.grid {
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
 }
-footer a { color: #4a919e; text-decoration: none; }
+.card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 18px; padding: 26px 26px 22px;
+  text-decoration: none; overflow: hidden;
+  transition: transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s, border-color .3s;
+}
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--c, var(--teal)); opacity: 0; transition: opacity .3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 44px rgba(18,60,83,.13);
+  border-color: var(--line-2);
+}
+.card:hover::before { opacity: 1; }
+.card-top {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-60); margin-bottom: 14px;
+}
+.card-country { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.card-country::before { content:''; width: 7px; height: 7px; border-radius: 50%; background: var(--c, var(--teal)); }
+.card h3 {
+  font-family: var(--serif); font-weight: 500; font-size: 1.35rem;
+  line-height: 1.2; color: var(--navy-dk); margin-bottom: 10px;
+  transition: color .25s;
+}
+.card:hover h3 { color: var(--navy); }
+.card p {
+  font-size: .92rem; color: var(--ink-60); line-height: 1.6;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  margin-bottom: 18px;
+}
+.card-more {
+  margin-top: auto; font-size: .8rem; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--c, var(--teal));
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.card-more svg { transition: transform .25s; }
+.card:hover .card-more svg { transform: translateX(4px); }
 
-/* Mobile */
-@media (max-width: 700px) {
-    .hero h1 { font-size: 2em; }
-    article { padding: 25px; }
-    article h1 { font-size: 1.6em; }
-    .post-card { padding: 20px; }
-    nav .links a { margin-left: 15px; font-size: 0.75em; }
-    .post-nav { flex-direction: column; }
+/* featured */
+.card.featured {
+  grid-column: span 3;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; padding: 0;
+  background: linear-gradient(120deg, #256a8c 0%, var(--navy) 55%, var(--navy-dk) 100%);
+  border: none; color: var(--paper);
+}
+.card.featured::before { display: none; }
+.feat-body { padding: 46px 46px 40px; display: flex; flex-direction: column; }
+.feat-tag {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  font-size: .74rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--navy-dk); background: var(--amber);
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 22px;
+}
+.card.featured h3 { color: #fff; font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 400; margin-bottom: 8px; }
+.feat-date { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(246,237,220,.6); margin-bottom: 18px; }
+.card.featured p { color: rgba(246,237,220,.85); font-size: 1rem; -webkit-line-clamp: 5; margin-bottom: 26px; }
+.card.featured .card-more { color: var(--amber); }
+.feat-visual { position: relative; min-height: 300px; }
+.feat-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.grid.hidden-mode .card:not(.featured) { display: none; }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- about ---------- */
+.about-band {
+  margin-top: 100px;
+  background: linear-gradient(160deg, var(--teal) 0%, #3a7c88 60%, #336e7a 100%);
+  color: var(--paper);
+}
+.about-inner {
+  max-width: 1160px; margin: 0 auto; padding: 90px 24px;
+  display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: center;
+}
+.about-inner img { width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 14px 34px rgba(0,0,0,.25); }
+.about-inner h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 14px; }
+.about-inner h2 em { font-style: italic; color: var(--amber); }
+.about-inner p { max-width: 62ch; color: rgba(246,237,220,.88); font-size: 1.02rem; }
+
+/* ---------- footer ---------- */
+footer { background: var(--navy-dk); color: rgba(246,237,220,.7); }
+.foot-inner {
+  max-width: 1160px; margin: 0 auto; padding: 56px 24px;
+  display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between;
+}
+.foot-brand { display: flex; align-items: center; gap: 12px; }
+.foot-brand img { width: 40px; height: 40px; border-radius: 50%; }
+.foot-brand span { font-family: var(--serif); font-size: 1.1rem; color: var(--paper); }
+.foot-note { font-size: .82rem; }
+.foot-note b { color: var(--amber); font-weight: 600; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: left; }
+  .hero-badge { display: none; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .card.featured { grid-column: span 2; grid-template-columns: 1fr; }
+  .feat-visual { min-height: 200px; }
+  .stats-card { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(3) { border-left: none; }
+  .stat { border-top: 1px solid var(--line); }
+  .stat:nth-child(-n+2) { border-top: none; }
+  .about-inner { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+}
+@media (max-width: 620px) {
+  .grid { grid-template-columns: 1fr; }
+  .card.featured { grid-column: span 1; }
+  .feat-body { padding: 34px 26px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: .72rem; }
+  section { padding-top: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
-
 </head>
 <body>
+<div class="grain"></div>
+
 <nav>
-    <div class="nav-inner">
-        <a href="#" class="logo-link">
-            <img src="photos/logo.png" alt="The Respected Path">
-        </a>
-        <div class="links">
-            <a href="#">All Posts</a>
-            <a href="##posts">Archive</a>
-        </div>
+  <div class="nav-inner">
+    <img class="nav-logo" src="photos/logo.png" alt="The Respected Path logo">
+    <a class="nav-name" href="#top">The Respected Path</a>
+    <div class="nav-links">
+      <a href="#route">The Route</a>
+      <a href="#journal">Journal</a>
+      <a href="#about">About</a>
     </div>
+  </div>
 </nav>
-<div class="hero">
-    <h1>The Respected Path</h1>
-    <p class="tagline">follow the respected path</p>
-    <span class="post-count">36 Adventures</span>
+
+<header class="hero" id="top">
+  <svg class="rings" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+    <circle cx="300" cy="300" r="290" stroke="#f6eddc" stroke-opacity=".14" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="235" stroke="#f3aa60" stroke-opacity=".22" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="180" stroke="#f3aa60" stroke-opacity=".3" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="128" stroke="#ef6262" stroke-opacity=".35" stroke-width="1.5"/>
+    <circle cx="300" cy="300" r="80" fill="#ef6262" fill-opacity=".18"/>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">A Travel Journal · 2024</div>
+      <h1>Follow the<br><em>respected</em> path.</h1>
+      <p class="hero-sub">Notes from the road — buses, ferries, hostels and border crossings — from the Baja peninsula through Central America, and across the Atlantic to Spain and Italy.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="#journal">Read the journal</a>
+        <a class="btn btn-ghost" href="#route">Trace the route</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <img src="photos/logo.png" alt="The Respected Path — badge logo with mountains, pines and a figure on a path at sunset">
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stats-card reveal">
+    <div class="stat"><b data-count="36">0</b><span>Entries</span></div>
+    <div class="stat"><b data-count="8">0</b><span>Countries</span></div>
+    <div class="stat"><b data-count="164">0</b><span>Days on the road</span></div>
+    <div class="stat"><b>2</b><span>Continents</span></div>
+  </div>
 </div>
-<div class="container" id="posts">
-<div class="post-card">
-    <h2><a href="813-naples-italy.html">Naples, Italy</a></h2>
-    <div class="meta">June 16, 2024 · <span class="cat">Blog Posts</span></div>
-    <div class="excerpt">
-After two weeks in Barcelona searching for a long-term place to stay and starting the process to legally reside in Spain for a year, I had completed everything I could for the time being but still had a few weeks before the beginning of my course. Wanting to take full advantage of the remaining tim...</div>
+
+<section id="route">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">The Route</div>
+    <h2 class="sec-title">One path, <em>ten stops.</em></h2>
+  </div>
+  <div class="route-wrap reveal">
+    <div class="route-scroll">
+      <svg class="route-svg" id="routeSvg" viewBox="0 0 1160 240" fill="none" role="list" aria-label="Journey route"></svg>
+    </div>
+    <div class="route-legend">
+      <span><b>Jan 4, 2024</b> — Denver International Airport</span>
+      <span>Tap a stop to filter the journal</span>
+      <span><b>Jun 16, 2024</b> — Naples, Italy</span>
+    </div>
+  </div>
+</section>
+
+<section id="journal">
+  <div class="sec-head reveal">
+    <div class="sec-kicker">The Journal</div>
+    <h2 class="sec-title">Dispatches, newest <em>first.</em></h2>
+  </div>
+  <div class="filters reveal" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="about-band" id="about">
+  <div class="about-inner reveal">
+    <img src="photos/logo.png" alt="The Respected Path badge">
+    <div>
+      <h2>Walk the path, <em>earn the name.</em></h2>
+      <p>The Respected Path is a long-form travel journal: one backpack, public transport, and a loose plan that kept changing. It begins at Denver International Airport in January 2024, winds down the Baja peninsula, crosses mainland México into Guatemala, El Salvador, Costa Rica and Panama — then jumps the Atlantic for a new chapter in Spain and Italy. Every entry is written from the road, as it happened.</p>
+    </div>
+  </div>
 </div>
-<div class="post-card">
-    <h2><a href="802-barcelona.html">Barcelona</a></h2>
-    <div class="meta">June 09, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
 
-
-
-
-This is my second time to Barcelona. I visited for a few short days in 2017. On a shorter Spain trip. The city is what you would get if Miami and Los Angeles got together and had a baby, and was clean, mostly. Having both Beaches and Mountains within easy reach, a warm and predictable climate y...</div>
-</div>
-<div class="post-card">
-    <h2><a href="791-madrid-spain.html">Madrid, Spain</a></h2>
-    <div class="meta">May 29, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Favorable winds gave us a good push across the Atlantic last night and we arrived over 20 mins early to Madrid’s Barajas airport, keeping our intercontinental jaunt to under 10 hours. A welcome start to part 2 of this adventure.
-
-
-
-I’ve been to Spain a few times before, but my previous adventures h...</div>
-</div>
-<div class="post-card">
-    <h2><a href="766-reflections-of-central-america.html">Reflections of Central America</a></h2>
-    <div class="meta">May 25, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Firstly, the security situation in Central America is greatly overstated. While you should not ignore the warnings issued by governments and passed on by other travelers, just keeping your wits about you and remembering why you are visiting these places and you will probably be fine. DON’T GO LOOKI...</div>
-</div>
-<div class="post-card">
-    <h2><a href="734-panama-canal.html">Panama Canal</a></h2>
-    <div class="meta">May 22, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-A trip to Panama cannot be done without visiting the Panama Canal. The Canal was completed in 1914 and was a monumental engineering feat for its time. It connects the Pacific Ocean to the Atlantic Ocean cutting through the Panama isthmus, significantly reducing maritime travel time. Originally star...</div>
-</div>
-<div class="post-card">
-    <h2><a href="724-casco-viejo-panama.html">Casco Viejo, Panama</a></h2>
-    <div class="meta">May 19, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-You know those days when you think about what’s on your agenda and you just get that feeling that you “literally just can’t even” and you will do almost anything to find and excuse to not do it. Yeah, that happened to me in Bocas when I was trying to purchase my bus ticket out of there. A boat ride...</div>
-</div>
-<div class="post-card">
-    <h2><a href="707-bocas-del-toro-panama.html">Bocas Del Toro, Panama</a></h2>
-    <div class="meta">May 12, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-The last 2 days of diving got scrubbed because of the weather. Morning rain storms made the water choppy and cloudy. Signs that Central America’s rainy season is just beginning. I packed y bag and made my way to the bus stop in Los Coco’s and started the day of travel back to San Jose. You can’t ca...</div>
-</div>
-<div class="post-card">
-    <h2><a href="695-playas-del-cocos.html">Playas Del Cocos</a></h2>
-    <div class="meta">May 04, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Continuing our tour of Co$ta Rica, my next stop is the Pacific Coast destination of Playa Del Cocos. It was here I decided I really needed to exercise the privileges of my new Open Water Diver certification. I’m new to the sport, so I really have no idea what exactly constitutes good diving, but a ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="677-vulcan-arenal.html">Vulcan Arenal</a></h2>
-    <div class="meta">April 21, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-
-
-
-A stratovolcano, also known as a composite volcano, is a conical volcano built up by many layers (strata) of hardened lava and tephra.[1] Unlike shield volcanoes, stratovolcanoes are characterized by a steep profile with a summit crater and periodic intervals of explosive eruptions and effusive ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="657-manuel-antonio.html">Manuel Antonio</a></h2>
-    <div class="meta">April 14, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-
-
-
-
-
-
-I cheated; I suppose. That is if there were a hard set of rules to follow, but since I get to make them up as I go along, I also say what I did was valid. As I’ve mentioned earlier, when I departed on this journey earlier this year, my first goal was to visit every country in Central America....</div>
-</div>
-<div class="post-card">
-    <h2><a href="644-el-salvador.html">El Salvador</a></h2>
-    <div class="meta">April 06, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-All my posts up to this point have been a dive into the things I saw and did in a particular location. I can’t really do that for El Salvador. I didn’t see what ever cultural attractions there were. I didn’t visit ancient historical sights. I just chilled. I found an Hostel close to the beach and j...</div>
-</div>
-<div class="post-card">
-    <h2><a href="626-lake-atitlan.html">Lake Atitlan</a></h2>
-    <div class="meta">March 31, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-About 2 ½ hours from Antigua is Lago de Atitlan or Lake Atitlan in English. Ringed by 3 separate Volcanoes, the lake basin itself is a former caldera formed from a volcanic eruption an estimated 84,000 years ago. Some people call this the most beautiful lake in the world. I wouldn’t know because a ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="609-antigua.html">Antigua</a></h2>
-    <div class="meta">March 23, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Surrounded by active Volcanos, the colonial Guatemalan city of Antigua charms and delights travelers from around the world. Currently, it serves as the hub of the Guatemalan tourism industry with most tours and expeditions beginning and/or ending here. Accommodations and comida (español for food) a...</div>
-</div>
-<div class="post-card">
-    <h2><a href="594-semuc-champey.html">Semuc Champey</a></h2>
-    <div class="meta">March 20, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-As I perused the different offerings of tour operators in Flores I couldn’t help but notice how every agency seemed to offer the same things. Admittedly, I hadn’t done much research on what one sees and does in Guatemala so I really had no idea what to look for. There were photos on all the walls f...</div>
-</div>
-<div class="post-card">
-    <h2><a href="577-flores-guatemala.html">Flores, Guatemala</a></h2>
-    <div class="meta">March 17, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Finally, I had decided I had seen enough of Mexico for this trip. But, decided this here meant some major changes to my plans and goals. Like I said earlier, I had a loose goal to visit every country in Central America. Dipping out of Mexico to Guatemala now means I’ll have to skip Belize. After a ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="562-palenque.html">Palenque</a></h2>
-    <div class="meta">March 13, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-I ended up deciding not to ditch Mexico yet. After a night around a firepit, other travelers advised me not to miss Palenque. I was hesitant to take their advice as I had already been to two sets of ancient ruins in Mexico. I’m glad I took their advice.
-
-
-
-The ruins in Palenque are much newer than ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="554-san-cristobel.html">San Cristobel</a></h2>
-    <div class="meta">March 10, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Due to its mountainous terrain, what is currently the Mexican state of Chiapas, was hardly touched by Spanish explorers until much later in history.  The city of San Cristobel de las Casas sits at 7,200 feet above sea level and has been a hub of indigenous culture for hundred of years, almost untou...</div>
-</div>
-<div class="post-card">
-    <h2><a href="540-oaxaca.html">Oaxaca</a></h2>
-    <div class="meta">March 06, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-I got sick in Oaxaca. I knew something was wrong my last few days in Mexico City. You know when you get that &quot;spicy cough&quot; that’s your first indication something is up. Then sneezing fits, runny nose and by the time I was walking from the bus station to my hostel in Oaxaca I had broken out into a s...</div>
-</div>
-<div class="post-card">
-    <h2><a href="526-mexico-city---end.html">Mexico City - End</a></h2>
-    <div class="meta">March 02, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-I would say Mexico City is underrated, but I think the cat has been out of the bag about this city for a while now. I do think that people don’t give it enough consideration when looking for large world class cities to visit though. London, Paris and Rome are all high on peoples bucket list of trav...</div>
-</div>
-<div class="post-card">
-    <h2><a href="494-mexico-city---the-halls-of-montezuma.html">Mexico City - The Halls of Montezuma</a></h2>
-    <div class="meta">February 24, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-At 18 years old, fresh out of high school, I enlisted in the United States Marine Corps. I served for one, 5-year enlistment. Even though the time spent was nothing but a speed bump on the road of life, being a member of an an organization of that caliber will influence your persona for the rest of...</div>
-</div>
-<div class="post-card">
-    <h2><a href="483-méxico-city---casa-azul.html">México City - Casa Azul</a></h2>
-    <div class="meta">February 21, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-One of México’s most well knows Artists is Frida Kahlo. Born in Coyoacán, a suburb of México City, to a Méxican mother and German father, her mestizo upbringing and childhood marred by disease and injury is what would influence her art and ultimately her legacy.
-
-
-
-She contracted Polio at age 6 whi...</div>
-</div>
-<div class="post-card">
-    <h2><a href="440-mexico-city---teotihuacán.html">Mexico City - Teotihuacán</a></h2>
-    <div class="meta">February 17, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-When visiting the capital of México one of the must see attractions is the pre-Aztec (yes before the Aztec’s) pyramids of Teotihuacán. About an hour outside the city, though they are accessible to those daring enough to venture through various modes of public transport. Usually, this is what I woul...</div>
-</div>
-<div class="post-card">
-    <h2><a href="419-méxico-city-part-1.html">México City, Part 1</a></h2>
-    <div class="meta">February 14, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Guadalajara to Mexico City should be one of the most trafficked routes in the entire County of México, but somehow, I found myself the only passenger on the bus after 2 stops and one hour left in the journey. It was a holiday weekend and I think most people were getting out of the cities, the traff...</div>
-</div>
-<div class="post-card">
-    <h2><a href="396-tlaquepaque.html">Tlaquepaque</a></h2>
-    <div class="meta">February 11, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-On the edge of Guadalajara sits the pueblo of Tlaquepaque (Tla-Keh-Pa-Keh). A popular day trip for all visitors to Guadalajara, the colorful streets are filled with the smells of restaurants and the sounds of Mariachis. Like so many other Pueblo Magicos, store fronts are filled by local artisans, h...</div>
-</div>
-<div class="post-card">
-    <h2><a href="386-tequila-jalisco.html">Tequila, Jalisco</a></h2>
-    <div class="meta">February 07, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Nestled in the heart of Jalisco, México the pueblo of Tequila lies amongst the fields of Blue Agave. Fields that stretch as far as the eye can see. México’s iconic spirt gets its name from its hometown and the small city has fully embraced its heritage. Tourists are bussed (and sometimes brought by...</div>
-</div>
-<div class="post-card">
-    <h2><a href="375-guadalajara.html">Guadalajara</a></h2>
-    <div class="meta">February 03, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-As I came up the stairs from the Guadalajara metro, arriving to the city at its Plaza de Armas, the Palacio de Gobiero, or Government Palace, comes into view. Built in 1650 and destroyed by an earthquake in 1750, the current facade dates to 1790. Immediately next to it the Guadalajara Cathedral. Or...</div>
-</div>
-<div class="post-card">
-    <h2><a href="356-sayulita.html">Sayulita</a></h2>
-    <div class="meta">January 31, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Even though intercity buses are one of the more popular modes of travel in México, there isn’t one national bus company like in the United States. Multiple lines run mostly regional routes which means piecing together a routing can be a challenge. I mostly use the website Rome2rio.com to figure out...</div>
-</div>
-<div class="post-card">
-    <h2><a href="340-mazatlán.html">Mazatlán</a></h2>
-    <div class="meta">January 28, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-Mazatlán was the first city that surprised me.
-
-
-
-Mazatlán started its life as an outpost of smugglers and pirates. The Mexican government opened a customs office in the 1850’s legitimizing the settlement. It rose to prominence in the 1950’s as a resort destination along with other cities along the...</div>
-</div>
-<div class="post-card">
-    <h2><a href="324-baja-ferries.html">Baja Ferries</a></h2>
-    <div class="meta">January 26, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-The time had finally come to leave the Baja peninsula and check the first portion of this adventure off the to-do list. I’ll make a more comprehensive post about my thoughts on Baja as a whole in a few days, but for now we will say this has been an experience for the books and I will always lookbac...</div>
-</div>
-<div class="post-card">
-    <h2><a href="308-los-cabos.html">Los Cabos</a></h2>
-    <div class="meta">January 24, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-San Jose del Cabo is the quieter of the “Los Cabos.” At least, that’s what I was told. Looking down on the street from my 2nd Floor Hostel you wouldn’t know that tonight. I arrived on a Thursday, and Thursdays are the local Art Walk night in San Jose del Cabo. The streets are filled with locals and...</div>
-</div>
-<div class="post-card">
-    <h2><a href="286-todos-santos.html">Todos Santos</a></h2>
-    <div class="meta">January 18, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-
-
-
-
-Mexico’s Pueblo Magico’s a towns chosen by the Mexican Secretary for Tourism as towns that offer tourists “cultural richness, historical relevance, cuisine, art crafts, and great hospitality.&quot; There’s currently 132 Pueblo Magicos in Mexico and Todos Santos is my second. The first was Loreto and...</div>
-</div>
-<div class="post-card">
-    <h2><a href="257-la-paz.html">La Paz</a></h2>
-    <div class="meta">January 16, 2024 · <span class="cat">Uncategorized</span></div>
-    <div class="excerpt">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-I arrived in La Paz midafternoon on a bus from Loreto. I spent one night there after returning my rental car. One walk along the Malecón, filled with hotels that were out of my budget and advertisements for fishing charters that I could not afford and I realized my time there would be...</div>
-</div>
-<div class="post-card">
-    <h2><a href="217-mulegé.html">Mulegé</a></h2>
-    <div class="meta">January 12, 2024 · <span class="cat">Blog Posts</span></div>
-    <div class="excerpt">
-The pueblo of Mulegé was was first established in 1705 by Jesuit priest Juan Manuel Basaldua. In 1754 missionary Francisco Escalante ordered the building of El Mission de Nuestra Señora de Santa Rosalia de Mulegé. The Mulegé river flows through the center of town, lined with palm trees it offers a ...</div>
-</div>
-<div class="post-card">
-    <h2><a href="214-guerrero-negro-to-mulege.html">Guerrero Negro to Mulege</a></h2>
-    <div class="meta">January 10, 2024 · <span class="cat">Blog Posts</span></div>
-    <div class="excerpt">
-Other than the Whale Watching and the salt mine, the town of Guerrero Negro didn’t offer much else for a solo traveler to do. A large collection of restaurants kept me full of Birria and Tortas for my stay there. But I made plans to move on the morning after the day of the tour.
-
-
-
-Again, I purchas...</div>
-</div>
-<div class="post-card">
-    <h2><a href="210-guerrero-negro-whale-watching.html">Guerrero Negro Whale Watching</a></h2>
-    <div class="meta">January 08, 2024 · <span class="cat">Blog Posts</span></div>
-    <div class="excerpt">
-After 2 uneventful days eating at any Taco Stand and food vendor that looked appetizing in the Tijuana Centro it was time to pack my bags and continue south.
-
-
-
-The hostel was quiet the entire time with only 2 other guests who were assigned to the other dorm. At times It felt like having my own pen...</div>
-</div>
-<div class="post-card">
-    <h2><a href="205-day-1.html">Day 1</a></h2>
-    <div class="meta">January 04, 2024 · <span class="cat">Blog Posts</span></div>
-    <div class="excerpt">
-The iconic white peaks of Denver International Airport break the horizon. I’ve done this portion of the journey dozens, if not hundreds of times in my life.&amp;nbsp; This is not a novel sight for me. But today it hits different, today is more permanent. 3 months ago, I quit my job and decided to fulfi...</div>
-</div>
-</div>
 <footer>
-    <p>Rebuilt from WordPress export · <a href="index.html">The Respected Path</a></p>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <img src="photos/logo.png" alt="">
+      <span>The Respected Path</span>
+    </div>
+    <div class="foot-note">Rebuilt from a WordPress export · <b>follow the respected path</b></div>
+  </div>
 </footer>
+
+<script>
+const COUNTRIES = {
+  'Departure':   { color: '#8a9aa5', label: 'Departure' },
+  'México':      { color: '#ef6262', label: 'México' },
+  'Guatemala':   { color: '#f3aa60', label: 'Guatemala' },
+  'El Salvador': { color: '#d98b3a', label: 'El Salvador' },
+  'Costa Rica':  { color: '#7fb0b8', label: 'Costa Rica' },
+  'Panamá':      { color: '#468b97', label: 'Panamá' },
+  'Spain':       { color: '#c94f4f', label: 'Spain' },
+  'Italy':       { color: '#1d5b79', label: 'Italy' },
+  'Reflections': { color: '#16303f', label: 'Reflections' }
+};
+
+const STOPS = [
+  { key: 'Departure',   label: 'Denver',        sub: 'Jan 4' },
+  { key: 'México',      label: 'Baja',          sub: 'Jan 8–26' },
+  { key: 'México',      label: 'Mainland MX',   sub: 'Jan 28 – Mar 13' },
+  { key: 'Guatemala',   label: 'Guatemala',     sub: 'Mar 17–31' },
+  { key: 'El Salvador', label: 'El Salvador',   sub: 'Apr 6' },
+  { key: 'Costa Rica',  label: 'Costa Rica',    sub: 'Apr 14 – May 4' },
+  { key: 'Panamá',      label: 'Panamá',        sub: 'May 12–22' },
+  { key: 'Spain',       label: 'Madrid',        sub: 'May 29' },
+  { key: 'Spain',       label: 'Barcelona',     sub: 'Jun 9' },
+  { key: 'Italy',       label: 'Naples',        sub: 'Jun 16' }
+];
+
+const POSTS = [
+  { t:'Naples, Italy', d:'June 16, 2024', c:'Italy', href:'813-naples-italy.html',
+    x:'After two weeks in Barcelona searching for a long-term place to stay and starting the process to legally reside in Spain for a year, I had completed everything I could for the time being but still had a few weeks before the beginning of my course. With the paperwork paused and the calendar open, I pointed south — to Naples.' },
+  { t:'Barcelona', d:'June 09, 2024', c:'Spain', href:'802-barcelona.html',
+    x:'This is my second time to Barcelona. I visited for a few short days in 2017 on a shorter Spain trip. The city is what you would get if Miami and Los Angeles got together and had a baby — and was clean, mostly. Having both beach and metropolis in one place changes how a city feels.' },
+  { t:'Madrid, Spain', d:'May 29, 2024', c:'Spain', href:'791-madrid-spain.html',
+    x:'Favorable winds gave us a good push across the Atlantic last night and we arrived over 20 minutes early to Madrid’s Barajas airport, keeping our intercontinental jaunt to under 10 hours. A welcome start to part two of this adventure.' },
+  { t:'Reflections of Central America', d:'May 25, 2024', c:'Reflections', href:'766-reflections-of-central-america.html',
+    x:'Firstly, the security situation in Central America is greatly overstated. While you should not ignore the warnings issued by governments and passed on by other travelers, just keeping your wits about you and remembering why you are visiting these places goes a long way.' },
+  { t:'Panama Canal', d:'May 22, 2024', c:'Panamá', href:'734-panama-canal.html',
+    x:'A trip to Panama cannot be done without visiting the Panama Canal. Completed in 1914, it was a monumental engineering feat for its time — connecting the Pacific to the Atlantic through the isthmus and changing global trade forever.' },
+  { t:'Casco Viejo, Panama', d:'May 19, 2024', c:'Panamá', href:'724-casco-viejo-panama.html',
+    x:'You know those days when you think about what’s on your agenda and you get that feeling that you “literally just can’t even”, and you will do almost anything to find an excuse not to do it? Yeah, that happened to me in Bocas.' },
+  { t:'Bocas Del Toro, Panama', d:'May 12, 2024', c:'Panamá', href:'707-bocas-del-toro-panama.html',
+    x:'The last two days of diving got scrubbed because of the weather. Morning rain storms made the water choppy and cloudy — signs that Central America’s rainy season is just beginning. I packed my bag and made my way to the bus stop.' },
+  { t:'Playas Del Cocos', d:'May 04, 2024', c:'Costa Rica', href:'695-playas-del-cocos.html',
+    x:'Continuing our tour of Co$ta Rica, my next stop is the Pacific coast destination of Playas del Coco. It was here I decided I really needed to exercise the privileges of my new Open Water Diver certification.' },
+  { t:'Vulcan Arenal', d:'April 21, 2024', c:'Costa Rica', href:'677-vulcan-arenal.html',
+    x:'A stratovolcano rising over the rainforest, Arenal dominates the skyline of La Fortuna — hot springs, hanging bridges, and a perfectly cone-shaped reminder that the earth is still under construction.' },
+  { t:'Manuel Antonio', d:'April 14, 2024', c:'Costa Rica', href:'657-manuel-antonio.html',
+    x:'Where the jungle meets the Pacific — sloths in the canopy, capuchin monkeys working the beach, and some of the most visited national park trails in the country.' },
+  { t:'El Salvador', d:'April 06, 2024', c:'El Salvador', href:'644-el-salvador.html',
+    x:'All my posts up to this point have been a dive into the things I saw and did in a particular location. I can’t really do that for El Salvador. I didn’t see the cultural attractions or ancient historical sights. I just came through — and that was its own kind of experience.' },
+  { t:'Lake Atitlan', d:'March 31, 2024', c:'Guatemala', href:'626-lake-atitlan.html',
+    x:'About two and a half hours from Antigua is Lago de Atitlán. Ringed by three separate volcanoes, the lake basin itself is a former caldera formed an estimated 84,000 years ago. Some people call this the most beautiful lake in the world.' },
+  { t:'Antigua', d:'March 23, 2024', c:'Guatemala', href:'609-antigua.html',
+    x:'Surrounded by active volcanoes, the colonial Guatemalan city of Antigua charms and delights travelers from around the world. It serves as the hub of the country’s tourism industry, with most tours and expeditions beginning or ending here.' },
+  { t:'Semuc Champey', d:'March 20, 2024', c:'Guatemala', href:'594-semuc-champey.html',
+    x:'As I perused the different offerings of tour operators in Flores I couldn’t help but notice every agency seemed to offer the same things. Admittedly, I hadn’t done much research on Guatemala — so I really had no idea what Semuc Champey was.' },
+  { t:'Flores, Guatemala', d:'March 17, 2024', c:'Guatemala', href:'577-flores-guatemala.html',
+    x:'Finally, I had decided I had seen enough of México for this trip. But deciding this meant some major changes to my plans and goals. I had a loose goal to visit every country in Central America — dipping out of México to Guatemala was step one.' },
+  { t:'Palenque', d:'March 13, 2024', c:'México', href:'562-palenque.html',
+    x:'After receiving advice from fellow travelers, I visited the newer Mayan ruins in Palenque. Despite my initial reluctance, the detailed architecture and jungle setting exceeded my expectations — and hiring a guide made all the difference.' },
+  { t:'San Cristobel', d:'March 10, 2024', c:'México', href:'554-san-cristobel.html',
+    x:'Due to its mountainous terrain, what is currently the Mexican state of Chiapas was hardly touched by Spanish explorers until much later in history. San Cristóbal de las Casas sits at 7,200 feet and has long been a hub of indigenous culture.' },
+  { t:'Oaxaca', d:'March 06, 2024', c:'México', href:'540-oaxaca.html',
+    x:'I got sick in Oaxaca. I knew something was wrong my last few days in Mexico City — you know that “spicy cough” that’s your first indication something is up. Then sneezing fits, runny nose, and by the walk from the bus station…' },
+  { t:'Mexico City — End', d:'March 02, 2024', c:'México', href:'526-mexico-city---end.html',
+    x:'I would say Mexico City is underrated, but the cat has been out of the bag for a while now. People don’t give it enough consideration when listing world-class cities — London, Paris and the rest get the mentions, but CDMX belongs in that conversation.' },
+  { t:'Mexico City — The Halls of Montezuma', d:'February 24, 2024', c:'México', href:'494-mexico-city---the-halls-of-montezuma.html',
+    x:'At 18 years old, fresh out of high school, I enlisted in the United States Marine Corps. I served one five-year enlistment. Even though that time was nothing but a speed bump on the road of life, being a member of an organization of that caliber stays with you.' },
+  { t:'México City — Casa Azul', d:'February 21, 2024', c:'México', href:'483-méxico-city---casa-azul.html',
+    x:'One of México’s most well-known artists is Frida Kahlo. Born in Coyoacán to a Mexican mother and German father, her mestizo upbringing and a childhood marred by disease and injury would influence her art — and ultimately her legend.' },
+  { t:'Mexico City — Teotihuacán', d:'February 17, 2024', c:'México', href:'440-mexico-city---teotihuacán.html',
+    x:'When visiting the capital, one of the must-see attractions is the pre-Aztec — yes, before the Aztecs — pyramids of Teotihuacán, about an hour outside the city and accessible to those daring enough to venture through various modes of transport.' },
+  { t:'México City, Part 1', d:'February 14, 2024', c:'México', href:'419-méxico-city-part-1.html',
+    x:'Guadalajara to Mexico City should be one of the most trafficked routes in the entire country, but somehow I found myself the only passenger on the bus after two stops, with one hour left in the journey. It was a holiday weekend, and I think most people had already arrived.' },
+  { t:'Tlaquepaque', d:'February 11, 2024', c:'México', href:'396-tlaquepaque.html',
+    x:'On the edge of Guadalajara sits the pueblo of Tlaquepaque (Tla-Keh-Pa-Keh). A popular day trip, its colorful streets are filled with the smells of restaurants and the sounds of mariachis — like so many Pueblos Mágicos, it earns the title.' },
+  { t:'Tequila, Jalisco', d:'February 07, 2024', c:'México', href:'386-tequila-jalisco.html',
+    x:'Nestled in the heart of Jalisco, the pueblo of Tequila lies among fields of blue agave stretching as far as the eye can see. México’s iconic spirit gets its name from its hometown, and the small city has fully embraced its heritage.' },
+  { t:'Guadalajara', d:'February 03, 2024', c:'México', href:'375-guadalajara.html',
+    x:'Coming up the stairs from the Guadalajara metro into the Plaza de Armas, the Palacio de Gobierno comes into view. Built in 1650, destroyed by an earthquake in 1750, the current facade dates to 1790 — imposing in the best way.' },
+  { t:'Sayulita', d:'January 31, 2024', c:'México', href:'356-sayulita.html',
+    x:'Even though intercity buses are one of the more popular modes of travel in México, there isn’t one national bus company like in the United States. Multiple lines run mostly regional routes, which means piecing together a routing can be a challenge.' },
+  { t:'Mazatlán', d:'January 28, 2024', c:'México', href:'340-mazatlán.html',
+    x:'Mazatlán was the first city that surprised me. It started life as an outpost of smugglers and pirates; the Mexican government opened a customs office in the 1850s, legitimizing the settlement. It rose to prominence on its own terms.' },
+  { t:'Baja Ferries', d:'January 26, 2024', c:'México', href:'324-baja-ferries.html',
+    x:'The time had finally come to leave the Baja peninsula and check the first portion of this adventure off the to-do list. I’ll make a more comprehensive post about my thoughts on Baja as a whole soon, but for now: it has been an experience.' },
+  { t:'Los Cabos', d:'January 24, 2024', c:'México', href:'308-los-cabos.html',
+    x:'San José del Cabo is the quieter of the “Los Cabos” — at least, that’s what I was told. Looking down on the street from my second-floor hostel you wouldn’t know it tonight: Thursdays are the local Art Walk night.' },
+  { t:'Todos Santos', d:'January 18, 2024', c:'México', href:'286-todos-santos.html',
+    x:'México’s Pueblos Mágicos are towns chosen by the Secretaría de Turismo for their cultural and historical richness — and Todos Santos, an hour up the Pacific side of the cape, wears the designation well.' },
+  { t:'La Paz', d:'January 16, 2024', c:'México', href:'257-la-paz.html',
+    x:'The capital of Baja California Sur moves at its own pace — a malecón built for evening walks, whale sharks in the bay, and sea lions at Espíritu Santo just offshore.' },
+  { t:'Mulegé', d:'January 12, 2024', c:'México', href:'217-mulegé.html',
+    x:'The pueblo of Mulegé, established in 1705, is home to the Misión de Nuestra Señora de Santa Rosalía de Mulegé, the Mulegé river, and a few hotels, restaurants and grocery stores — a hub for beaches popular with campers and RV owners.' },
+  { t:'Guerrero Negro to Mulegé', d:'January 10, 2024', c:'México', href:'214-guerrero-negro-to-mulege.html',
+    x:'Other than the whale watching and the salt mine, Guerrero Negro didn’t offer much else for a solo traveler. A large collection of restaurants kept me full of birria and tortas, but I made plans to move on in the morning.' },
+  { t:'Guerrero Negro Whale Watching', d:'January 08, 2024', c:'México', href:'210-guerrero-negro-whale-watching.html',
+    x:'After two uneventful days eating at any taco stand and food vendor that looked appetizing in Tijuana Centro, it was time to pack my bags and continue south. The hostel was quiet the entire time, with only two other guests.' },
+  { t:'Day 1', d:'January 04, 2024', c:'Departure', href:'205-day-1.html',
+    x:'The iconic white peaks of Denver International Airport break the horizon. I’ve done this portion of the journey dozens, if not hundreds of times in my life. This is not a novel sight for me. But today it hits different — today is more permanent.' }
+];
+</script>
+<script src="app.js"></script>
 </body>
 </html>
